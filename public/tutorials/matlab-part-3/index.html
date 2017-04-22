@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    MATLAB Part 3, Plotten von Werten und Funktionen // RANTA - Coding, Hacking and more
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="MATLAB Part 3, Plotten von Werten und Funktionen">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="generator" content="Hugo 0.18.1" />
+
+  <meta property="og:title" content="MATLAB Part 3, Plotten von Werten und Funktionen" />
+<meta property="og:description" content="MATLAB Part 3, Plotten von Werten und Funktionen" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://ranta.ch/tutorials/matlab-part-3/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="http://ranta.ch//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="RANTA - Coding, Hacking and more" />
+
+    
+  <link rel="stylesheet" href="/css/styles/color-brewer.css">
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/ranta-changes.css">
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+	  <img src="/page/ranta.jpg" class="sidebarphoto">
+	
+
+    <h1 class="brand-title">Ranta</h1>
+    <h2 class="brand-tagline">Coding, Hacking, Teaching, Robotics, Security and more</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://ranta.ch/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/tutorials/Programming_Arduino_With_Kdevelop/">Adruino programmieren mit KDevelope</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts">Articles</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/tutorials">Tutorials</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+        <a href="http://www.github.com/LukyLuke" target="_blank"><i class='fa fa-github'></i></a>
+        
+      
+        
+        <a href="http://www.twitter.com/ranta_plan" target="_blank"><i class='fa fa-twitter'></i></a>
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+<ul>
+<li><a href="#matlab-plotten">MATLAB - Plotten</a>
+<ul>
+<li><a href="#variablen">Variablen</a></li>
+</ul></li>
+<li><a href="#plotten-von-werten">Plotten von Werten</a>
+<ul>
+<li><a href="#beispiele">Beispiele</a>
+<ul>
+<li><a href="#einfache-2-dimensionale-linie">Einfache 2-Dimensionale Linie</a></li>
+<li><a href="#einfache-3-dimensionale-linie">Einfache 3-Dimensionale Linie</a></li>
+<li><a href="#sinus-funktion">Sinus-Funktion</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/tutorials/matlab-part-3/">MATLAB Part 3, Plotten von Werten und Funktionen</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>19</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Feb</span> <span class="post-date-year">2017</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-tutorial" href="http://ranta.ch//categories/tutorial">Tutorial</a>
+				
+					<a class="post-category post-category-matlab" href="http://ranta.ch//categories/matlab">MATLAB</a>
+				
+					<a class="post-category post-category-lernen" href="http://ranta.ch//categories/lernen">Lernen</a>
+				
+					<a class="post-category post-category-programmieren" href="http://ranta.ch//categories/programmieren">Programmieren</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            
+
+<h1 id="matlab-plotten">MATLAB - Plotten</h1>
+
+<p>Matlab arbeitet eigentlich nur mit Matrizen und nciht mit Zahlen
+Ein <code>&gt;&gt; x = 3;</code> ist eine <code>1x1 Matrix</code> mit dem Wert <code>3</code>.</p>
+
+<h2 id="variablen">Variablen</h2>
+
+<p>Kein Keyword notwendig.
+Wichtig bei Schlaufen etc.: Es sollten die Zeichen <code>i</code> und <code>j</code> nicht verwendet werden, das sind die Imaginären Zahlen welche dadurch überschrieben werden (<code>&gt;&gt; im = 5 + 2*i</code>)</p>
+
+<h1 id="plotten-von-werten">Plotten von Werten</h1>
+
+<p>In MATLAB wird die Funktion <code>plot(X, Y[], Z])</code> verwendet um einen Vektor grafisch dar zu stellen.
+Die Übergebenen Vektoren müssen logischerweise die geliche Dimension aufweisen so dass jeweils ein Punkt von X mit einem Punkt von Y (und Z) aufgezeichnet werden kann.</p>
+
+<h2 id="beispiele">Beispiele</h2>
+
+<h3 id="einfache-2-dimensionale-linie">Einfache 2-Dimensionale Linie</h3>
+
+<p>Zuerst werden die zwei Vektoren für die X und die Y Achse definiert und anschliessend der <code>plot(x, y, z)</code> Funktion übergeben. Als Resultat wird ein Fenster geöffnet welches eine Linie in einem Karthesischen Koordinatensystem zeigt, welche jeweils den Wert aus dem X-Vektor mit dem Wert aus dem Y-Vektor verbindet.</p>
+
+<pre><code class="language-matlab">&gt;&gt; x = [ 1, 2, 3, 5, 8 ];
+&gt;&gt; y = [ 2, 3, 0, 5, 1 ];
+&gt;&gt; plot(x, y);
+</code></pre>
+
+<h3 id="einfache-3-dimensionale-linie">Einfache 3-Dimensionale Linie</h3>
+
+<p>Gleiches Prinzip wie bei der 2-Dimensionalen Linie.</p>
+
+<pre><code class="language-matlab">&gt;&gt; x = [ 1, 2, 3, 5, 8 ];
+&gt;&gt; y = [ 2, 3, 0, 5, 1 ];
+&gt;&gt; z = [ 2, 1, 2, 1, 3 ];
+&gt;&gt; plot(x, y, z);
+</code></pre>
+
+<h3 id="sinus-funktion">Sinus-Funktion</h3>
+
+<p>Für jeden Wert auf der X-Achse wird ein Wert in der Y-Achse gebraucht. Zuerst wird also ein Vektor mit den Werten der X-Achse erstellt, daraus dann die Werte von Y mit der Sinus-Funktion. Die Werte auf der X-Achse gehen von <code>-10</code> bis <code>+10</code> mit einer Distanz von <code>0.5</code>, also <code>101</code> Punkten.</p>
+
+<pre><code class="language-matlab">&gt;&gt; x = -10:0.5:10;
+&gt;&gt; y = sin(x);
+&gt;&gt; plot(x, y);
+</code></pre>
+
+<p>Je feiner man die X-Matrix auflöst, desto schöner wird dann auch die geplottete Funktion.</p>
+
+	
+			
+
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-tutorial" href="http://ranta.ch//tags/tutorial">Tutorial</a>,
+	                
+	                <a class="post-tag post-tag-matlab" href="http://ranta.ch//tags/matlab">MATLAB</a>,
+	                
+	                <a class="post-tag post-tag-rechnen" href="http://ranta.ch//tags/rechnen">Rechnen</a>,
+	                
+	                <a class="post-tag post-tag-matrizen" href="http://ranta.ch//tags/matrizen">Matrizen</a>,
+	                
+	                <a class="post-tag post-tag-coding" href="http://ranta.ch//tags/coding">Coding</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/projects/Prusa_Raspberry_OctoPrint/">Prusa i4 mit einem RaspberryPi und OctoPrint</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/tutorials/matlab-part-2/">MATLAB Part 2, Programmiergrundlagen</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2017. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

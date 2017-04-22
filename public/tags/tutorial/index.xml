@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorial on RANTA - Coding, Hacking and more</title>
+    <link>http://ranta.ch/tags/tutorial/index.xml</link>
+    <description>Recent content in Tutorial on RANTA - Coding, Hacking and more</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-ch</language>
+    <atom:link href="http://ranta.ch/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MATLAB Part 3, Plotten von Werten und Funktionen</title>
+      <link>http://ranta.ch/tutorials/matlab-part-3/</link>
+      <pubDate>Sun, 19 Feb 2017 12:00:00 +0100</pubDate>
+      
+      <guid>http://ranta.ch/tutorials/matlab-part-3/</guid>
+      <description>
+
+&lt;h1 id=&#34;matlab-plotten&#34;&gt;MATLAB - Plotten&lt;/h1&gt;
+
+&lt;p&gt;Matlab arbeitet eigentlich nur mit Matrizen und nciht mit Zahlen
+Ein &lt;code&gt;&amp;gt;&amp;gt; x = 3;&lt;/code&gt; ist eine &lt;code&gt;1x1 Matrix&lt;/code&gt; mit dem Wert &lt;code&gt;3&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;variablen&#34;&gt;Variablen&lt;/h2&gt;
+
+&lt;p&gt;Kein Keyword notwendig.
+Wichtig bei Schlaufen etc.: Es sollten die Zeichen &lt;code&gt;i&lt;/code&gt; und &lt;code&gt;j&lt;/code&gt; nicht verwendet werden, das sind die Imaginären Zahlen welche dadurch überschrieben werden (&lt;code&gt;&amp;gt;&amp;gt; im = 5 + 2*i&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h1 id=&#34;plotten-von-werten&#34;&gt;Plotten von Werten&lt;/h1&gt;
+
+&lt;p&gt;In MATLAB wird die Funktion &lt;code&gt;plot(X, Y[], Z])&lt;/code&gt; verwendet um einen Vektor grafisch dar zu stellen.
+Die Übergebenen Vektoren müssen logischerweise die geliche Dimension aufweisen so dass jeweils ein Punkt von X mit einem Punkt von Y (und Z) aufgezeichnet werden kann.&lt;/p&gt;
+
+&lt;h2 id=&#34;beispiele&#34;&gt;Beispiele&lt;/h2&gt;
+
+&lt;h3 id=&#34;einfache-2-dimensionale-linie&#34;&gt;Einfache 2-Dimensionale Linie&lt;/h3&gt;
+
+&lt;p&gt;Zuerst werden die zwei Vektoren für die X und die Y Achse definiert und anschliessend der &lt;code&gt;plot(x, y, z)&lt;/code&gt; Funktion übergeben. Als Resultat wird ein Fenster geöffnet welches eine Linie in einem Karthesischen Koordinatensystem zeigt, welche jeweils den Wert aus dem X-Vektor mit dem Wert aus dem Y-Vektor verbindet.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;&amp;gt;&amp;gt; x = [ 1, 2, 3, 5, 8 ];
+&amp;gt;&amp;gt; y = [ 2, 3, 0, 5, 1 ];
+&amp;gt;&amp;gt; plot(x, y);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;einfache-3-dimensionale-linie&#34;&gt;Einfache 3-Dimensionale Linie&lt;/h3&gt;
+
+&lt;p&gt;Gleiches Prinzip wie bei der 2-Dimensionalen Linie.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;&amp;gt;&amp;gt; x = [ 1, 2, 3, 5, 8 ];
+&amp;gt;&amp;gt; y = [ 2, 3, 0, 5, 1 ];
+&amp;gt;&amp;gt; z = [ 2, 1, 2, 1, 3 ];
+&amp;gt;&amp;gt; plot(x, y, z);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;sinus-funktion&#34;&gt;Sinus-Funktion&lt;/h3&gt;
+
+&lt;p&gt;Für jeden Wert auf der X-Achse wird ein Wert in der Y-Achse gebraucht. Zuerst wird also ein Vektor mit den Werten der X-Achse erstellt, daraus dann die Werte von Y mit der Sinus-Funktion. Die Werte auf der X-Achse gehen von &lt;code&gt;-10&lt;/code&gt; bis &lt;code&gt;+10&lt;/code&gt; mit einer Distanz von &lt;code&gt;0.5&lt;/code&gt;, also &lt;code&gt;101&lt;/code&gt; Punkten.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;&amp;gt;&amp;gt; x = -10:0.5:10;
+&amp;gt;&amp;gt; y = sin(x);
+&amp;gt;&amp;gt; plot(x, y);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Je feiner man die X-Matrix auflöst, desto schöner wird dann auch die geplottete Funktion.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MATLAB Part 2, Programmiergrundlagen</title>
+      <link>http://ranta.ch/tutorials/matlab-part-2/</link>
+      <pubDate>Sun, 19 Feb 2017 11:00:00 +0100</pubDate>
+      
+      <guid>http://ranta.ch/tutorials/matlab-part-2/</guid>
+      <description>
+
+&lt;h1 id=&#34;matlab-funktionen-und-schlaufen&#34;&gt;MATLAB - Funktionen und Schlaufen&lt;/h1&gt;
+
+&lt;p&gt;Matlab arbeitet eigentlich nur mit Matrizen und nciht mit Zahlen
+Ein &lt;code&gt;&amp;gt;&amp;gt; x = 3;&lt;/code&gt; ist eine &lt;code&gt;1x1 Matrix&lt;/code&gt; mit dem Wert &lt;code&gt;3&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;variablen&#34;&gt;Variablen&lt;/h2&gt;
+
+&lt;p&gt;Kein Keyword notwendig.
+Wichtig bei Schlaufen etc.: Es sollten die Zeichen &lt;code&gt;i&lt;/code&gt; und &lt;code&gt;j&lt;/code&gt; nicht verwendet werden, das sind die Imaginären Zahlen welche dadurch überschrieben werden (&lt;code&gt;&amp;gt;&amp;gt; im = 5 + 2*i&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h1 id=&#34;programmieren-in-matlab&#34;&gt;Programmieren in MATLAB&lt;/h1&gt;
+
+&lt;p&gt;Normalerweise werden Skripte nicht direkt in MATLAB eingegeben, man kann das aber auch machen.
+Skripte sind nichts anderes als dass, was man im Command-Prompt eingibt, in einer Datei ausgelagert, so dass man nicht immer alles neu eingeben muss.&lt;/p&gt;
+
+&lt;h2 id=&#34;wo-sucht-matlab-nach-skripten&#34;&gt;Wo sucht MATLAB nach Skripten&lt;/h2&gt;
+
+&lt;p&gt;Generell sucht MATLAB im aktuellen Verzeichniss und vielen anderen nach Skripten. Diese findet man heraus mit dem Kommando &lt;code&gt;&amp;gt;&amp;gt; path&lt;/code&gt;. Weitere Kommandos sind &lt;code&gt;pwd&lt;/code&gt; welches das aktuelle Verzeichniss anzeigt und &lt;code&gt;ls&lt;/code&gt; um den Inhalt an zu zeigen respektive &lt;code&gt;cd DIR&lt;/code&gt; um in eines zu wechseln.&lt;/p&gt;
+
+&lt;p&gt;Um ein Verzeichniss zu dem &lt;code&gt;path&lt;/code&gt; hinzuzufügen, so dass MATLAB da drin nach unseren Skripten sucht, muss dies über die &lt;em&gt;Current Folder&lt;/em&gt;-View der Ordner gefunden werden und mittels Kontextmenü auf &lt;em&gt;Add to Path -&amp;gt; Selected Folders (and Subfolders)&lt;/em&gt; Funktion gemacht werden.&lt;/p&gt;
+
+&lt;h2 id=&#34;editor-für-skripte&#34;&gt;Editor für Skripte&lt;/h2&gt;
+
+&lt;p&gt;Wenn man sich nicht mit den Emacs-Tastenkombinationen auseinandersetzen will, dann sollte man unter &lt;em&gt;Preferences -&amp;gt; MATLAB -&amp;gt; Keyboard -&amp;gt; Shortcuts&lt;/em&gt; die aktiven Einstellungen von &lt;em&gt;Emacs Default Set&lt;/em&gt; auf &lt;em&gt;Windows Default Set&lt;/em&gt; stellen oder diejenigen Shortcuts anpassen die nicht passen.&lt;/p&gt;
+
+&lt;p&gt;Neue Skripte/Funktionen einfach &lt;em&gt;New -&amp;gt; Skript&lt;/em&gt; erstellen und Coden (Funktionen auch über &lt;em&gt;New -&amp;gt; Skript&lt;/em&gt; erstellen). Eine praktische Ansicht ist, wenn man das Editor-Window an das normale MATLAB andockt.&lt;/p&gt;
+
+&lt;p&gt;Im Editor kann über den &lt;strong&gt;Run&lt;/strong&gt;-Button das Skript ausgeführt und getestet werden, oder man gibt im Command-Promt den Namen des Skripts ein.&lt;/p&gt;
+
+&lt;h1 id=&#34;syntax-funktionen-und-schlaufen&#34;&gt;Syntax, Funktionen und Schlaufen&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Kommentare werden mit &lt;code&gt;% COMMENT&lt;/code&gt; definiert.&lt;/li&gt;
+&lt;li&gt;Blöcke kann man mit &lt;code&gt;%% BLOCKNAME&lt;/code&gt; definieren.
+Ein Block kann verwendet werden um diesen Separiert über &lt;strong&gt;Run Section&lt;/strong&gt; ausgeführt werden.
+Zusätzlich dient eine Section auch der visuellen separierung.&lt;/li&gt;
+&lt;li&gt;Funktionen, Schlaufen und Bedingungen werden nicht mit Klammern sondern in Pascal-ähnlicher Syntax geschrieben: &lt;code&gt;function ... end&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;globale-funktionen&#34;&gt;Globale Funktionen&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;function RESULT = NAME(ARG...)
+...
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Der Funktionsname &lt;code&gt;NAME&lt;/code&gt; sollte niemals gleich heissen wie eine schon bestehende Funktion von uns oder MATLAB.&lt;/p&gt;
+
+&lt;p&gt;Das Keyword &lt;code&gt;RESULT&lt;/code&gt; definiert, welche Variable innerhalb der Funktion als Rückgabe verwendet wird. &lt;code&gt;RESULT&lt;/code&gt; kann auch im Format einer Matrix angegeben werden: &lt;code&gt;[a, b ; c, d]&lt;/code&gt; um so eine 2-Dimensionale Matrix aus den vier Variabeln zurück zu geben.&lt;/p&gt;
+
+&lt;p&gt;Die Parameter &lt;code&gt;ARGS...&lt;/code&gt; sind optional und werden 1:1 in die Funktion rein gegeben. Diese können dann innerhalb der Funktion verwendet werden.&lt;/p&gt;
+
+&lt;h3 id=&#34;beispiel-einer-globalen-funktion&#34;&gt;Beispiel einer globalen Funktion&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;function y = test(x)
+  % Erstellt eine Matrix befüllt mit &#39;1&#39; mit der gleichen Dimension und gibt diese zurück
+  y = ones(size(x));
+end
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;lokale-funktionen&#34;&gt;Lokale Funktionen&lt;/h2&gt;
+
+&lt;p&gt;Lokale Funktionen sind alle Funktionen, welche nicht so heissen wie der Dateiname. Diese sind nicht von aussen, also aus dem Command-Prompt ausführbar.&lt;/p&gt;
+
+&lt;h2 id=&#34;wenn-dann-if-else&#34;&gt;Wenn-Dann / If-Else&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;if (BEDINGUNG)
+...
+else if (BEDINGUNG 2)
+...
+else
+...
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wenn man je nach Situation reagieren will, dann muss man mit einer IF-ELSE Frage erst definieren was denn geprüft werden soll und was beim Zutreffen der Bedingung gemacht werden soll.&lt;/p&gt;
+
+&lt;h3 id=&#34;beispiel-einer-abfrage&#34;&gt;Beispiel einer Abfrage&lt;/h3&gt;
+
+&lt;p&gt;Ein sinnloses Beispiel, welches aber veranschaulicht wie man &lt;code&gt;if - else - end&lt;/code&gt; verwendet:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;&amp;gt;&amp;gt; a = 3;
+&amp;gt;&amp;gt; b = 5;
+&amp;gt;&amp;gt; if (a &amp;lt; b)
+c = a;
+else
+c = b;
+end
+
+&amp;gt;&amp;gt; c
+ans = 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Es wird also verglichen, ob &lt;code&gt;a&lt;/code&gt; kleiner ist als &lt;code&gt;b&lt;/code&gt; und wenn dies zutrifft, dann wird der neuen Variable &lt;code&gt;c&lt;/code&gt; der Wert von &lt;code&gt;a&lt;/code&gt; zugewiesen. Wäre &lt;code&gt;a&lt;/code&gt; grösser oder gleich gross wie &lt;code&gt;b&lt;/code&gt;, so würde die Bedingung nicht zutreffen und &lt;code&gt;c&lt;/code&gt; wäre dann &lt;code&gt;5&lt;/code&gt;, also das gleiche wie &lt;code&gt;b&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;schlaufe-for&#34;&gt;Schlaufe / For&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;for n = MATRIX
+...
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;*&lt;strong&gt;Wichtig:&lt;/strong&gt; Niemals die Variabelnnamen &lt;code&gt;i&lt;/code&gt; und &lt;code&gt;j&lt;/code&gt; verwenden da dies imaginäre Zahlen sind!*&lt;/p&gt;
+
+&lt;h3 id=&#34;beispiel-einer-for-schlaufe&#34;&gt;Beispiel einer For-Schlaufe&lt;/h3&gt;
+
+&lt;p&gt;Beispielsweise kann so eine Matrix durchlaufen werden und die Werte mit sich selber multipliziert werden:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;&amp;gt;&amp;gt; y = 1;
+&amp;gt;&amp;gt; for n = [ 2, 4, 6 ]
+y = y * n;
+end
+&amp;gt;&amp;gt; y
+ans = 48
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Anstelle der Matrix kann man auch hier wieder die dynamisch generierten Matrizen verwenden:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;&amp;gt;&amp;gt; for n = 1:10
+x(n) = n * 5;
+end
+&amp;gt;&amp;gt; x
+ans = [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;konmplettes-beispiel&#34;&gt;Konmplettes Beispiel&lt;/h1&gt;
+
+&lt;p&gt;Zuerst definieren wir eine Funtion &lt;code&gt;test&lt;/code&gt; in der Datei &lt;code&gt;test.m&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;function y = test(x)
+  y = zeros( size(x) )
+
+  for n = 1:length(x)
+    if x(n) &amp;gt; 4
+      y(n) = two_square( x(n) )
+    else if x(n) &amp;gt; 0
+      y(n) = double( x(n) )
+    else
+      y(n) = x(n)
+    end
+  end
+end
+
+function y = two_square(x)
+  y = 2 .^ x;
+end
+
+function y = double(x)
+  y = 2 * x;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Das ganze kann nun in einem Skript verwenden:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;clear all;
+
+x = -2:0.01:5;
+y = test(x);
+plot(x,y)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Es wird also zuerst der ganze Stack geleert und anschliessend ein x-Vektor initialisert und davon dann der y-Vektor mit der &lt;code&gt;test(x)&lt;/code&gt; Funktion berechnet. Das ganze dann zur Veranschaulichung noch ausgegeben mit derplot-Funktion.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MATLAB Part 1, Grundlagen</title>
+      <link>http://ranta.ch/tutorials/matlab-part-1/</link>
+      <pubDate>Sun, 19 Feb 2017 10:00:00 +0100</pubDate>
+      
+      <guid>http://ranta.ch/tutorials/matlab-part-1/</guid>
+      <description>
+
+&lt;h1 id=&#34;matlab-grundlagen&#34;&gt;MATLAB - Grundlagen&lt;/h1&gt;
+
+&lt;p&gt;Matlab arbeitet eigentlich nur mit Matrizen und nicht mit Zahlen
+Ein &lt;code&gt;&amp;gt;&amp;gt; x = 3;&lt;/code&gt; ist eine &lt;code&gt;1x1 Matrix&lt;/code&gt; mit dem Wert &lt;code&gt;3&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Unter &lt;a href=&#34;Free Product Trial&#34;&gt;https://ch.mathworks.com/programs/trials/trial_request.html?prodcode=ML&lt;/a&gt; kann eine freie Trial-Lizenz angefragt werden.&lt;/p&gt;
+
+&lt;h2 id=&#34;variablen&#34;&gt;Variablen&lt;/h2&gt;
+
+&lt;p&gt;Kein Keyword notwendig.
+Wichtig bei Schlaufen etc.: Es sollten die Zeichen &lt;code&gt;i&lt;/code&gt; und &lt;code&gt;j&lt;/code&gt; nicht verwendet werden, das sind die Imaginären Zahlen welche dadurch überschrieben werden (&lt;code&gt;&amp;gt;&amp;gt; im = 5 + 2*i&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h1 id=&#34;eingabe-von-matrizen-und-werten&#34;&gt;Eingabe von Matrizen und Werten&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;&amp;gt;&amp;gt; x = [ 1, 2, 3 ]; // Zeilenvektor 1x3
+&amp;gt;&amp;gt; y = [ 1; 2; 3 ]; // Spaltenvektor 3x1
+&amp;gt;&amp;gt; m = [ 1,2,3 ; 4,5,6 ; 7,8,9 ]; // Eine 3x3 Matrix
+&amp;gt;&amp;gt; m = 1:5; // Ein Zelenvektor von 1 bis 5
+&amp;gt;&amp;gt; m = 1:0.5:5; // Ein Zelenvektor von 1 bis 5 mit 0.5er Schritten (siehe linspace(a,b,s))
+&amp;gt;&amp;gt; r = rand(3, 4); // Eine 3x4 Matrix mit Random-Werten zwischen 0 bis 1
+&amp;gt;&amp;gt; z = zeros(3, 4); // Eine 3x4 Matrix mit 0en
+&amp;gt;&amp;gt; o = ones(3, 4); // Eine 3x4 Matrix mit 1en
+&amp;gt;&amp;gt; x(1, 4) = 10; // Der Matrix x in Zeile 1 Spalte 4 den Wert 10 zuweisen
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;rechnen-mit-matrizen&#34;&gt;Rechnen mit Matrizen&lt;/h2&gt;
+
+&lt;p&gt;Matrix für Beispiele:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;A = [ 1, 2, 3, 4, 5 ;
+      5, 6, 7, 8, 9 ;
+      4, 3, 2, 1, 0 ;
+      8, 7, 6, 5, 4 ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Eine Matrix wird mit dem Hochkomma transformiert: &lt;code&gt;&amp;gt;&amp;gt; y = x&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Auslesen eines Wertes: Hier Beispielshaft der Wert in der zweiten Zeile und zweiten Spalte &lt;code&gt;&amp;gt;&amp;gt; A(2, 2)&lt;/code&gt;
+Als Resultat kommt dann also &lt;code&gt;ans = 6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Auslesen einer Spalte: Hier Beispielshaft die zweite Spalte &lt;code&gt;&amp;gt;&amp;gt; A(:, 2)&lt;/code&gt;
+Als Resultat kommt dann also &lt;code&gt;ans = 2 ; 6 ; 3 ; 7&lt;/code&gt; (ein Spaltenvektor)&lt;/li&gt;
+&lt;li&gt;Auslesen einer Zeile: Hier Beispielshaft die dritte Zeile &lt;code&gt;&amp;gt;&amp;gt; A(3, :)&lt;/code&gt;
+Als Resultat kommt dann also &lt;code&gt;ans = 4, 3, 2, 1, 0&lt;/code&gt; (ein Zeilenvektor)&lt;/li&gt;
+&lt;li&gt;Auslesen von mehreren Werten: &lt;code&gt;&amp;gt;&amp;gt; A([1, 3], 4)&lt;/code&gt;
+Als Resultat kommt hier nun der 1 und 3 Wert aus der Spalte 4, ein Spaltenvektor: &lt;code&gt;ans = 4 ; 1&lt;/code&gt;
+Für einen Zeilenvektor entsprechend umgekehrt: &lt;code&gt;A(3, [1, 4])&lt;/code&gt; was den Vektor &lt;code&gt;ans = 4, 1&lt;/code&gt; ergibt
+Oder für eine Submatrix: &lt;code&gt;A([1, 3], [1, 4])&lt;/code&gt; was dann den Wert &lt;code&gt;ans = [ 1, 4 ; 4, 1 ]&lt;/code&gt; also aus den Zeilen 1 und 3 jeweils die Werte an Position 1 und 4.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;ACHTUNG: MATLAB rechnet numerisch mit Matrizen&lt;/strong&gt;
+Die normalen arithmetischen Funktionen &lt;code&gt;*, -, +, ^&lt;/code&gt; werden als Matrix/Skalar-Funktionen angewendet und nicht als arithmentische Funktionen.
+Will man mit einer Matrix elementweise rechnen, muss man einen &lt;code&gt;.&lt;/code&gt; vor den Operator setzen: &lt;code&gt;.*, .-, .+, .^&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;&amp;gt;&amp;gt; x = [ 1, 2, 3, 4, 5 ];  // Ein 1x3 Zeilenvektor
+&amp;gt;&amp;gt; y = x&#39;;                 // Ein 3x1 Spaltenvektor
+&amp;gt;&amp;gt; x * y
+ans = 55
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hier wird also ein Skalarprodukt gemacht nach folgendem Schema:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;              y
+              
+              1
+              2
+              3
+              4
+              5
+x  1 2 3 4 5 55
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hingegen würde &lt;code&gt;&amp;gt;&amp;gt; y * x&lt;/code&gt; folgendes Skalarprodukt ergeben:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;x  1   2   3   4   5
+1  1   2   3   4   5
+2  1   4   6   8  10
+3  3   6   9  12  15
+4  4   8  12  16  20
+5  5  10  15  20  25
+y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Arithmentische Berechnungen muss man immer Elementweise machen, Ausnahme ist das Skalarprodukt mit einer 1x1 Matrix:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;&amp;gt;&amp;gt; x = [ 1, 2, 3, 4, 5 ];
+&amp;gt;&amp;gt; x * 10
+ans = [ 10, 20, 30, 40, 50 ]
+
+&amp;gt;&amp;gt; x .^ 2
+ans = [ 1, 4, 9, 16, 25 ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;beispiele&#34;&gt;Beispiele&lt;/h3&gt;
+
+&lt;p&gt;Gegebenen ist folgende Matrix:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;A = [ 1, 2, 3, 4, 5 ;
+      5, 6, 7, 8, 9 ;
+      4, 3, 2, 1, 0 ;
+      8, 7, 6, 5, 4 ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Aus dieser sollen nun unterschiedliche neue Matrizen erstellt werden.&lt;/p&gt;
+
+&lt;h4 id=&#34;1-neue-matrix-aus-jeder-zweiten-spalte&#34;&gt;1.) Neue Matrix aus jeder zweiten Spalte&lt;/h4&gt;
+
+&lt;p&gt;Das kann man nun mit mehreren Wegen lösen.
+Entweder man gibt die spalten fix an, was unschön ist:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;A1 = A(:, 2, 4)
+ans = [ 2, 4 ;
+        6, 8 ;
+        3, 1 ;
+        7, 5 ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;oder verwendet eine Submatrix welche die gewünschten Spalten berechnet:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;A2 = A(:, 2:2:end )
+ans = [ 2, 4 ;
+        6, 8 ;
+        3, 1 ;
+        7, 5 ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hier verwendet man nun eine berechnete Matrix &lt;code&gt;2:2:end&lt;/code&gt; welche wie oben gezeigt eine Matrix erstllt die bei &lt;code&gt;2&lt;/code&gt; beginnt und zweierschritte macht. Das Keyword &lt;code&gt;end&lt;/code&gt; kann hier verwendet werden anstelle der &lt;code&gt;5&lt;/code&gt; (also Anstelle der maximalen Anzahl Spalten) - Es referenziert auf die Matrix &lt;code&gt;A&lt;/code&gt; in elcher wir uns ja befinden.&lt;/p&gt;
+
+&lt;h4 id=&#34;2-neue-matrix-aus-jeder-zweiten-spalte-und-jeder-zweiten-zeile&#34;&gt;2.) Neue Matrix aus jeder zweiten Spalte und jeder zweiten Zeile&lt;/h4&gt;
+
+&lt;p&gt;Hier das selbe Prinzip: Man verwendet eine berechnete Matrix um die neue aus der gegebenen zu erstellen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-matlab&#34;&gt;A3 = A(2:2:end, 2:2:end)
+ans = [ 6, 8 ;
+        7, 5 ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So kann eine grosse Matrix, Beispielsweise &lt;code&gt;B = rand(10)&lt;/code&gt;, schnell in eine neue transformiert werden.&lt;/p&gt;
+
+&lt;h1 id=&#34;datentypen&#34;&gt;Datentypen&lt;/h1&gt;
+
+&lt;p&gt;Standardmässig sind alle Zahlen in MATAB &lt;code&gt;double&lt;/code&gt;.
+Um explizip einen anderen Datentypen zu erhalten, muss man die Casting-funktionen verwenden:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;gt;&amp;gt; x = uint8(VAR)&lt;/code&gt;: Unsigned Integer mit 8 Bit.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;gt;&amp;gt; x = logical(VAR)|false|true&lt;/code&gt;: Logical aka Boolean.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;gt;&amp;gt; x = &#39;text&#39;&lt;/code&gt;: char, also normaler Text.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;wichtige-befehle&#34;&gt;Wichtige Befehle&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;clc&lt;/code&gt; Den Workspace leeren.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;clear VAR|all&lt;/code&gt; Eine einzelne oder alle Variablen löschen.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;zeros(X, Y, ...)&lt;/code&gt; Eine mit 0 gefüllte Matrix erstellen mit den gegebenen Dimensionen.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ones(X, Y, ...)&lt;/code&gt; Eine mit 1 gefüllte Matrix erstellen mit den gegebenen Dimensionen.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;linspace(FROM, TO, NUM)&lt;/code&gt; Einen Zeilenvektor vom FROM bis TO mit NUM Zahlen (nicht Schritten) erstellen.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;logspace(FROM, TO, NUM)&lt;/code&gt; Einen Zeilenvektor vom 10^FROM bis 10^TO mit NUM Zahlen (nicht Schritten) erstellen.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;logspace(log10(FROM), log10(TO), NUM)&lt;/code&gt; Einen Zeilenvektor vom FROM bis TO mit NUM Zahlen (nicht Schritten) erstellen - Äquivalent zu &lt;code&gt;linspace()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;size(VAR)&lt;/code&gt; Gibt die Grösse der Matrix zurück, also bei einer 3x4 Matrix ein &lt;code&gt;ans = 3  4&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;length(VAR)&lt;/code&gt; Gibt die grössere Grösse der Matrix zurück, also bei einer 3x4 Matrix ein &lt;code&gt;ans = 4&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rank(VAR)&lt;/code&gt; Bestimmt den Rang der Matrix, welcher im normalfall gleich der Dimensin ist (ausser in speziellen Fällen).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;det(VAR)&lt;/code&gt; Betsimmt die Determinante der Matrix.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;plot(X, Y, Z)&lt;/code&gt; Zeigt die eingegebenen Vektoren grafisch, Z ist optional.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

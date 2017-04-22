@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3d Printing on RANTA - Coding, Hacking and more</title>
+    <link>http://ranta.ch/categories/3d-printing/index.xml</link>
+    <description>Recent content in 3d Printing on RANTA - Coding, Hacking and more</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-ch</language>
+    <atom:link href="http://ranta.ch/categories/3d-printing/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Prusa i4 mit einem RaspberryPi und OctoPrint</title>
+      <link>http://ranta.ch/projects/Prusa_Raspberry_OctoPrint/</link>
+      <pubDate>Sat, 04 Mar 2017 09:00:24 +0100</pubDate>
+      
+      <guid>http://ranta.ch/projects/Prusa_Raspberry_OctoPrint/</guid>
+      <description>
+
+&lt;p&gt;Um meinen 3D-Drucker, ein Prusa i4, sinnvoll zu verwenden, habe ich immer nach einer optimalen, autonomen Lösung gesucht, bei welcher ich einfach meine Modelle hochladen kann und der Rest +passiert+ einfach so von alleine.
+Also habe ich angefangen mir auf einem RaspberryPi selber etwas zusammen zu bastelnmit Pronterface und anderen Tools.
+So ganz zufrieden war ich aber nie wirklich&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Seit dem Tag an dem ich nach einem Update von Slic3r die Optionen zu &lt;a href=&#34;OctoPrint&#34;&gt;http://octoprint.org/&lt;/a&gt; gesehen habe, verwende und empfehle ich nur noch dieses Setup.
+Hier wie ich mein System aufgebaut habe - ein wenig Linux kenntnisse sind vorausgesetzt, vorallem wenn es um das installieren von paketen und Anhängigkeiten geht (die habe ich nicht mehr alle im Kopf).&lt;/p&gt;
+
+&lt;h1 id=&#34;vorbereitungen&#34;&gt;Vorbereitungen&lt;/h1&gt;
+
+&lt;p&gt;Man braucht:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;hellip;einen 3D-Drucker&lt;/li&gt;
+&lt;li&gt;&amp;hellip;ich empfehle Marlin als Firmware, bei Repetier und Mendelmax hatte ich immer Aussetzer und andere Probleme&lt;/li&gt;
+&lt;li&gt;&amp;hellip;einen RaspberryPi&lt;/li&gt;
+&lt;li&gt;&amp;hellip;das Kameramodul zum RaspberryPi&lt;/li&gt;
+&lt;li&gt;&amp;hellip;oder ein UVC-Kompatible Webcam&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;raspberrypi-installieren&#34;&gt;RaspberryPi installieren&lt;/h2&gt;
+
+&lt;p&gt;Den RaspberryPi normal mit einem simplen Raspbian installieren und betriebsbereit machen. Hierzu gibt es schon genug Anleitungen.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Raspbian herunterladen&lt;/li&gt;
+&lt;li&gt;Raspbian auf die Flash entpacken&lt;/li&gt;
+&lt;li&gt;Bildschirm und Tastatur anhängen&lt;/li&gt;
+&lt;li&gt;RaspberryPi starten&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Für das ganze Setup wird kein Xorg oder anderer Window-Manager gebraucht, also nur in den Init-3 starten!
+Wenn man nicht als &lt;code&gt;root&lt;/code&gt; arbeitet für den ganzen Setup-Prozess, den verwendeten User den Gruppen &lt;code&gt;tty, dialout, video&lt;/code&gt; hinzufügen und &lt;code&gt;sudo&lt;/code&gt; nicht vergessen.&lt;/p&gt;
+
+&lt;h2 id=&#34;raspberrypi-setup&#34;&gt;RaspberryPi Setup&lt;/h2&gt;
+
+&lt;p&gt;Den RaspberryPi konfigurieren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ raspi-config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Kein X-Server/Window-Manager&lt;/li&gt;
+&lt;li&gt;Netzwerk&lt;/li&gt;
+&lt;li&gt;SSH-Server&lt;/li&gt;
+&lt;li&gt;Webcam - Wenn das Webcam-Modul verwendet wird&lt;/li&gt;
+&lt;li&gt;Alles andere nach eigenem Bedarf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;firmware-upgrade&#34;&gt;Firmware-Upgrade&lt;/h3&gt;
+
+&lt;p&gt;Anschliessend empfehle ich mit &lt;code&gt;rpi-update&lt;/code&gt; alles auf den neusten Stand zu bringen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ apt-get install rpi-update
+$ rpi-update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wenn rpi-update nicht mittels apt-get installiert werden kann:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ wget https://raw.github.com/Hexxeh/rpi-update/master/rpi-update -O /usr/bin/rpi-update &amp;amp;&amp;amp; chmod +x /usr/bin/rpi-update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;pakete-installieren&#34;&gt;Pakete installieren&lt;/h3&gt;
+
+&lt;p&gt;Folgende Pakete müssen installiert werden:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ apt-get install python-pip gcc cmake git git-core libav-tools
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;installation-und-setup-abschliessen&#34;&gt;Installation und Setup abschliessen&lt;/h3&gt;
+
+&lt;p&gt;Nach dem Setup und Update den RaspberryPi neu starten!&lt;/p&gt;
+
+&lt;p&gt;Anschliessend sollten alle Pakete aktualisiert werden:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ apt-get update
+$ apt-get upgrade
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;webcam-mit-mjpg-streamer&#34;&gt;Webcam mit MJPG-Streamer&lt;/h1&gt;
+
+&lt;p&gt;Der Originale &lt;a href=&#34;MJPG-Streamer&#34;&gt;https://sourceforge.net/projects/mjpg-streamer/&lt;/a&gt; unterstützt das Kamera-Modul vom RaspberryPi nicht, es gibt aber einen Fork von Liam Jackson unter GitHub: &lt;a href=&#34;MJPEG-Streamer mit RaspiCam&#34;&gt;https://github.com/jacksonliam/mjpg-streamer&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Einfach das Git-Repo klonen und installieren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /opt/
+$ git clone https://github.com/jacksonliam/mjpg-streamer.git
+$ cd mjpg-streamer/mjpg-streamer-experimental
+$ make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wenn alles gut läuft &lt;code&gt;mjpg-streamer&lt;/code&gt; kompiliert mit einigen input- und output-Plugins. Diese werden direkt in den &lt;code&gt;mjpg-streamer/mjpg-streamer-experimental&lt;/code&gt; Ordner kopiert und können von dort ausgeführt werden.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /opt/mjpg-streamer/mjpg-streamer-experimental
+$ ./mjpeg-streamer -i &amp;quot;./input_raspicam.so&amp;quot; -o &amp;quot;./output_http.so -p 8080 -w www&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Anschliessend sollte man über den Browser direkt darauf zugreifen können: &lt;a href=&#34;http://RASPI.IP.ADRESSE:8080/&#34;&gt;http://RASPI.IP.ADRESSE:8080/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Für eine UVC-Webcam muss noch das Modul geladen werden, der rest bleibt sich gleich:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ modprobe uvcvideo
+$ ./mjpeg-streamer -i &amp;quot;./input_uvc.so&amp;quot; -o &amp;quot;./output_http.so -p 8080 -w www&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;octoprint-installieren&#34;&gt;OctoPrint installieren&lt;/h1&gt;
+
+&lt;p&gt;Die installation von &lt;a href=&#34;OctoPrint&#34;&gt;http://octoprint.org/&lt;/a&gt; braucht relativ viele Python-Module welche einfach mittels &lt;code&gt;pip&lt;/code&gt; installiert werden können. Das Problem dabei ist, dass bei einer normalen Raspbian-Installation das &lt;code&gt;/tmp&lt;/code&gt; als &lt;code&gt;60MB tmpfs&lt;/code&gt; gemountet wird, was im Normalfall total ausreichend ist.&lt;/p&gt;
+
+&lt;p&gt;Für pip und die 10k Python-Module ist das jedoch zu wenig, deswegen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ umount /tmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;herunterladen-und-installieren&#34;&gt;Herunterladen und Installieren&lt;/h2&gt;
+
+&lt;p&gt;Auch OctoPrint wieder unter /opt installieren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /opt
+$ git clone https://github.com/foosel/OctoPrint.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bei meiner Installation bin ich bei mindestens einem Python-Modul gescheitert, deswegen sollte mindestens dieses über apt-get installiert werden:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ apt-get install python-Babbel
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alle anderen können dann über pip automatisch installiert werden:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd /opt/OctoPrint
+$ pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Schlägt ein Paket fehl, die Ausgabe prüfen und die Abhängigkeiten auflösen oder das Modul mittels apt-get manuell installieren.&lt;/p&gt;
+
+&lt;h2 id=&#34;octoprint-starten&#34;&gt;OctoPrint starten&lt;/h2&gt;
+
+&lt;p&gt;Sind alle Abhängigkeiten installiert, kann &lt;a href=&#34;OctoPrint&#34;&gt;http://octoprint.org/&lt;/a&gt; gestartet werden:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /opt/OctoPrint
+$ ./run serve --iknowwhatimdoing --port 80
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Das dauert immer eine Weile, anschliessend kann dann über den Webbrowser alles weitere gemacht werden: &lt;a href=&#34;http://RASPI.IP.ADRESSE/&#34;&gt;http://RASPI.IP.ADRESSE/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;nützliche-einstellungen&#34;&gt;Nützliche Einstellungen&lt;/h2&gt;
+
+&lt;p&gt;Die Settings von &lt;a href=&#34;OctoPrint&#34;&gt;http://octoprint.org/&lt;/a&gt; werden im Home des jeweiligen Benutzers gespeichert: &lt;code&gt;~/.octoprint/config.yaml&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;zugangsbeschränkung&#34;&gt;Zugangsbeschränkung&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Unter:&lt;/strong&gt; Einstellungen -&amp;gt; Funktionen -&amp;gt; Zugangsbeschränkung&lt;/p&gt;
+
+&lt;p&gt;Neuen Benutzer erstellen um den Zugriff zu beschränken&lt;/p&gt;
+
+&lt;h3 id=&#34;webcam&#34;&gt;Webcam&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Unter:&lt;/strong&gt; Einstellungen -&amp;gt; Webcam &amp;amp; Zeitraffer&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Stream URL&lt;/strong&gt;     &lt;a href=&#34;http://RASPI.IP.ADRESSE:8080/?action=stream&#34;&gt;http://RASPI.IP.ADRESSE:8080/?action=stream&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Snapshot URL&lt;/strong&gt;   &lt;a href=&#34;http://RASPI.IP.ADRESSE:8080/?action=snapshot&#34;&gt;http://RASPI.IP.ADRESSE:8080/?action=snapshot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FFMPEG Pfad&lt;/strong&gt;    /usr/bin/avconv&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;system-settings&#34;&gt;System-Settings&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Unter:&lt;/strong&gt; Einstellungen -&amp;gt; OctoPrint -&amp;gt; Server&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Restart OctoPrint&lt;/strong&gt; /etc/init.d/octoprint restart&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Restart System&lt;/strong&gt;    /sbin/reboot&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Shutdown System&lt;/strong&gt;   /sbin/halt&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;plugins&#34;&gt;Plugins&lt;/h2&gt;
+
+&lt;p&gt;OctoPrint kann mit vielen &lt;a href=&#34;OctoPrint&#34;&gt;http://plugins.octoprint.org/&lt;/a&gt; ausgestattet werden. Sinnvolle und Sinnlose :)&lt;/p&gt;
+
+&lt;h3 id=&#34;telegram&#34;&gt;Telegram&lt;/h3&gt;
+
+&lt;p&gt;Um ein komplett autonomes System zu haben, welches man auch mal ein paar Stundenunbeaufsichtigt laufen lassen kann, bietet sich das Telegram-Plugin an.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Unter:&lt;/strong&gt; Einstellungen -&amp;gt; PluginManager -&amp;gt; Mehr&amp;hellip;
+Nach dem Plungin &lt;em&gt;Telegram&lt;/em&gt; suchen und installieren. Wie man den Telegram-Bot erstellt wird gut auf der GitHub-Seite erklärt: &lt;a href=&#34;Create Telegram Bot&#34;&gt;https://github.com/fabianonline/OctoPrint-Telegram/blob/stable/README.md#create-telegram-bot&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Wenn der Bot erstellt ist, meine Empfehlung ist dass man die Group und Privacy Dinger abstellt, kann man nach dem eigenen Bot suchen und per Kommando &lt;code&gt;/start&lt;/code&gt; anfangen mit dem Bot zu sprechen. Jeden benutzer und jede Gruppe in welche man den Bot haben will, muss man dann noch in den OctoPrint Einstellungen freischalten: &lt;strong&gt;Unter:&lt;/strong&gt; Einstellungen -&amp;gt; Plugins -&amp;gt; Telegram&lt;/p&gt;
+
+&lt;h3 id=&#34;z-distance&#34;&gt;Z-Distance&lt;/h3&gt;
+
+&lt;p&gt;Dieses Plugin zeigt einem die Z-Distanz in der Sidebar an, an welcher der Printer aktuell ist.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Unter:&lt;/strong&gt; Einstellungen -&amp;gt; PluginManager -&amp;gt; Mehr&amp;hellip;
+Nach dem Plungin &lt;em&gt;Z-Distance&lt;/em&gt; suchen und installieren.&lt;/p&gt;
+
+&lt;h2 id=&#34;octoprint-automatisch-starten&#34;&gt;OctoPrint automatisch starten&lt;/h2&gt;
+
+&lt;p&gt;Es gibt bei OctoPrint eine Einstellung, dass dieser im Daemon-Mode gestartet wird. Der ist bei mir immer abgekackt, weswegen ich den einfach im Background starte.&lt;/p&gt;
+
+&lt;p&gt;Folgendes Script kann verwendet werden um MJPG-Streamer und OctoPrint automatisch zu starten und beenden:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          octoprint
+# Required-Start:    $network
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Run Octoprint and mjpeg for streaming
+### END INIT INFO
+
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+
+. /lib/init/vars.sh
+. /lib/lsb/init-functions
+
+MJPG_DIR=/opt/mjpg-streamer/mjpg-streamer-experimental
+OCTO_DIR=/opt/OctoPrint
+
+do_start() {
+        if [ -x $MJPG_DIR/mjpg_streamer ]; then
+                [ &amp;quot;$VERBOSE&amp;quot; != no ] &amp;amp;&amp;amp; log_begin_msg &amp;quot;Stopping MJPEG-Streaming Server on port 8080&amp;quot;
+                $MJPG_DIR/mjpg_streamer -i &amp;quot;$MJPG_DIR/input_raspicam.so -x 1280 -y 720 -fps 5&amp;quot; -o &amp;quot;$MJPG_DIR/output_http.so -p 8080 -w $MJPG_DIR/www&amp;quot; &amp;amp;
+                [ &amp;quot;$VERBOSE&amp;quot; != no ] &amp;amp;&amp;amp; log_end_msg 0
+        fi
+        if [ -x $OCTO_DIR/run ]; then
+                [ &amp;quot;$VERBOSE&amp;quot; != no ] &amp;amp;&amp;amp; log_begin_msg &amp;quot;Starting OctoPrint on port 80&amp;quot;
+                cd $OCTO_DIR
+                ./run serve --iknowwhatimdoing --port 80 &amp;amp;
+                [ &amp;quot;$VERBOSE&amp;quot; != no ] &amp;amp;&amp;amp; log_end_msg 0
+        fi
+}
+
+do_stop() {
+        if [ -x $MJPG_DIR/mjpg_streamer ]; then
+                [ &amp;quot;$VERBOSE&amp;quot; != no ] &amp;amp;&amp;amp; log_begin_msg &amp;quot;Stopping MJPEG-Streaming Server on port 8080&amp;quot;
+                ps ax | grep mjpg_streamer | awk &#39;{print $1}&#39; | xargs kill -s SIGINT
+                [ &amp;quot;$VERBOSE&amp;quot; != no ] &amp;amp;&amp;amp; log_end_msg 0
+        fi
+        if [ -x $OCTO_DIR/run ]; then
+                [ &amp;quot;$VERBOSE&amp;quot; != no ] &amp;amp;&amp;amp; log_begin_msg &amp;quot;Stopping OctoPrint on port 80&amp;quot;
+                cd $OCTO_DIR
+                ps ax | grep &amp;quot;./run serve --iknowwhatimdoing&amp;quot; | awk &#39;{print $1}&#39; | xargs kill -s SIGQUIT
+                [ &amp;quot;$VERBOSE&amp;quot; != no ] &amp;amp;&amp;amp; log_end_msg 0
+        fi
+}
+
+case &amp;quot;$1&amp;quot; in
+    start)
+        do_start
+        ;;
+    restart)
+        do_stop
+        sleep 5
+        do_start
+        ;;
+    status|reload|force-reload)
+        echo &amp;quot;Error: argument &#39;$1&#39; not supported&amp;quot; &amp;gt;&amp;amp;2
+        exit 3
+        ;;
+    stop)
+        do_stop
+        ;;
+    *)
+        echo &amp;quot;Usage: $0 start|stop&amp;quot; &amp;gt;&amp;amp;2
+        exit 3
+        ;;
+esac
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Einfach nach &lt;code&gt;/opt/init.d/octoprint&lt;/code&gt; kopieren und Ausführbar machen: &lt;code&gt;chmod +x /rtc/init.d/octoprint&lt;/code&gt;
+Anschliessend mit den Debian üblichen Tools das ganze automatisch in die Start-Sequenz einbauen: &lt;code&gt;insserv octoprint&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;TODO: Beim beenden macht das Script ab und an noch ein wenig Mühe&lt;/p&gt;
+
+&lt;h1 id=&#34;slic3r-integration&#34;&gt;Slic3r Integration&lt;/h1&gt;
+
+&lt;p&gt;Um den ganzen Prozess zu vereinfachen, kann man bei &lt;a href=&#34;Slic3r&#34;&gt;http://slic3r.org/&lt;/a&gt; ab Version 1.9.2 (oder schon früher) den &lt;a href=&#34;OctoPrint&#34;&gt;http://octoprint.org/&lt;/a&gt;-Server als Option eingeben und anschliessend wenn man alles plaziert hat, den gCode direkt auf den Server laden. Anschliessend muss man dann nur noch im WebInterface das File auswählen und drucken.&lt;/p&gt;
+
+&lt;p&gt;Dazu wechselt man in Slic3r auf den Tab &lt;em&gt;Printer Settings&lt;/em&gt; und gibt dort bei &lt;em&gt;OctoPrint upload&lt;/em&gt; den Host und API-Key an.
+Den API-Key kann man auf dem Webinterface in den Einstellungen einsehen und neu generieren.&lt;/p&gt;
+
+&lt;p&gt;Ist das gemacht, einfach wenn man alle Objekte positionliert hat (im Tab &lt;em&gt;Plater&lt;/em&gt;) über die Schaltfläche &lt;em&gt;Send to printer&lt;/em&gt; den gCode hochladen.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

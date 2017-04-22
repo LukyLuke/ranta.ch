@@ -1,0 +1,53 @@
+/* Spezielle formatierungen um das originale Theme an zu passen */ 
+
+.sidebar {
+	background: #33200a;
+	color: #c2a67e;
+}
+.nav-item-separator {
+	color: #c2a67e;
+	letter-spacing: 0;
+}
+.nav-item a, .sidebar a {
+	color: #fceccb;
+}
+.post-category {
+	background: #77B7E6;
+	border-radius: 2px;
+}
+
+.post h3 {
+	color: black;
+}
+
+sub, sup {
+	font-size: 50%;
+	top: -1em;
+}
+
+.dark-red, .decorative-marker,
+.read-more-link a, .read-more-slashes,
+.post-date, .post-date-separator, .post-date-month, .post-date-year {
+	color: #0f6bb9;
+}
+.post-date-separator {
+	letter-spacing: -0.1rem;
+	font-weight: normal;
+	font-size: 1.6rem;
+}
+
+code {
+	background: #fbfbfb;
+	border: 1px solid #ddd;
+	padding: 0.1em 0.3em;
+	border-radius: 4px;
+	font-size: 0.85em;
+	line-height: 170%;
+}
+
+code.hljs {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 0.5em 0.8em;
+	background: #fbfbfb;
+}

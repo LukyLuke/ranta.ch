@@ -1,0 +1,36 @@
+title = "RANTA - Coding, Hacking and more"
+baseurl = "http://ranta.ch/"
+languageCode = "de-ch"
+theme = "hugo-redlounge"
+
+[params]
+	sidebartitle = "Ranta"
+	sidebartagline = "Coding, Hacking, Teaching, Robotics, Security and more"
+	nocomment = true
+	lightbox = true
+	sidebarphoto = "/page/ranta.jpg"
+	categoriescss = "/css/ranta-changes.css"
+
+
+[[menu.main]]
+	name = "Articles"
+	url = "/posts"
+
+[[menu.main]]
+	name = "Tutorials"
+	url = "/tutorials"
+
+[[menu.main]]
+	name = "Projects"
+	url = "/projects"
+
+
+[[menu.social]]
+	pre = "<i class='fa fa-twitter'></i>"
+	url = "http://www.twitter.com/ranta_plan"
+	identifier = "twitter"
+
+[[menu.social]]
+	pre = "<i class='fa fa-github'></i>"
+	url = "http://www.github.com/LukyLuke"
+	identifier = "github"
