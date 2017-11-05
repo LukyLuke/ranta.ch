@@ -12,7 +12,7 @@ Categories = ["Tutorial","MATLAB","Lernen","Programmieren"]
 Matlab arbeitet eigentlich nur mit Matrizen und nicht mit Zahlen
 Ein `>> x = 3;` ist eine `1x1 Matrix` mit dem Wert `3`.
 
-Unter [https://ch.mathworks.com/programs/trials/trial_request.html?prodcode=ML](Free Product Trial) kann eine freie Trial-Lizenz angefragt werden.
+Unter [Free Product Trial](https://ch.mathworks.com/programs/trials/trial_request.html?prodcode=ML) kann eine freie Trial-Lizenz angefragt werden.
 
 
 ## Variablen

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Signage on RANTA - Coding, Hacking, Teaching and more</title>
+    <link>//ranta.ch/tags/signage/index.xml</link>
+    <description>Recent content in Signage on RANTA - Coding, Hacking, Teaching and more</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-ch</language>
+    <atom:link href="//ranta.ch/tags/signage/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Graph module for Xibo</title>
+      <link>//ranta.ch/projects/xibo_digital_signage_graph_module/</link>
+      <pubDate>Tue, 02 May 2017 10:00:44 +0200</pubDate>
+      
+      <guid>//ranta.ch/projects/xibo_digital_signage_graph_module/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://xibo.org.uk/&#34;&gt;Xibo&lt;/a&gt; is a powerfull Open Source Digital Signange CMS to bring Content to public Displays. In our Company in my Team we wanted to display the amount of bugs versus the amunt of UnitTests, Codecoverage and others. Therefore out central IT department gave us Access to our Xibo installation where we where able to show pages from Jira, SonarCube and others. With that I was not really happy and started to create a custom module for Xibo to draw graphs with data from one but also multiple systems over time. See &lt;a href=&#34;https://github.com/LukyLuke/xibo_rgraph&#34;&gt;Github LukyLuke/xibo_rgraph&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To show graphs on a Website I found &lt;a href=&#34;https://www.rgraph.net/&#34;&gt;RGraph&lt;/a&gt; some time ago. This was for now the ideal JavaScript-Library to use with Xibo, becasue it has Canvas- and SVG Support which is supported by the used Internet-Explorere component in the Xibo-Client.&lt;/p&gt;
+
+&lt;h1 id=&#34;installation&#34;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;What you need is a running Xibo-1.8 installation.
+Download or clone &lt;a href=&#34;https://github.com/LukyLuke/xibo_rgraph&#34;&gt;Github LukyLuke/xibo_rgraph&lt;/a&gt; directly into the xibo installation (or copy everything). The folder structure should match and there is no need for more setup or any other downloads.&lt;/p&gt;
+
+&lt;p&gt;After this, go to the module settings page and enable the &lt;code&gt;RGraph&lt;/code&gt; Module.&lt;/p&gt;
+
+&lt;h1 id=&#34;settings&#34;&gt;Settings&lt;/h1&gt;
+
+&lt;p&gt;Currently the module is working as expected and is able to display one DataSet from the internally managed DataStore, or it can request up to two JSON-RPC for fetching data from remote hosts.&lt;/p&gt;
+
+&lt;p&gt;In the main settings dialog you can define the default colors used for printing the Graphs. Not forget to enable the Module here.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/xibo_rgraph/rgraph_module_settings.png&#34; alt=&#34;Main Module settings&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the page settings there are a lot of settings to make. On the main page you have to choose the type of graph to show:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/xibo_rgraph/rgraph_module_page_1.png&#34; alt=&#34;General Page settings&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the Data-Pane you can choose the type of Data to show. Depending on the selection even &amp;ldquo;JSON&amp;rdquo; or &amp;ldquo;Dataset&amp;rdquo; is shown on the panes area.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/xibo_rgraph/rgraph_module_page_2.png&#34; alt=&#34;Data settings&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The optional Javascript is for creating the right data-structure for RGraph. If you&amp;rsquo;re using a DataSet, just &lt;code&gt;return json&lt;/code&gt;.
+For Example there could be something like this when you request Data from SonarCube:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function prepareJsonData(json, json2) {
+    // This function will be called just after the JSON/Datastream data is received.
+    // In here you have to prepare the data to be in teh right format for the RGraph-Library:
+    //    data = { data: [val, val, val, ...],
+    //             labels: [lbl, lbl, lbl, ...],
+    //             legend: [lbl, lbl, lbl, ...] }
+    // or if you have more than one Data-Stream to visualize (bar, line, radar, waterfall, scatter):
+    //    data = { data: [[val, val, val, ...], [val, val, val, ...]],
+    //             labels: [lbl, lbl, lbl, ...],
+    //             legend: [lbl, lbl, lbl, ...] }
+    //
+    // The &#39;data&#39; contains all Data values as nummeric (float/integer)
+    // The &#39;labels&#39; contains all X-Axis labels. For better readibility just show every 10th label only
+    // The &#39;legend&#39; contains all keys to show the legend. The real values are evaluated with the &#39;geLabel(key)&#39; function above
+    var data = {data:[], labels:[], legend: []};
+    for (x in json2[0].cols) {
+        data.data.push([]);
+        data.legend.push(json2[0].cols[x].metric);
+    }
+    for (x in json2[0].cells) {
+        var time = json2[0].cells[x].d;
+        var values = json2[0].cells[x].v;
+        if (x%10 == 0) data.labels.push(time);
+        for (y in values) {
+            data.data[y].push(values[y]);
+        }
+    }
+    return data;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here for example a JSON-Request Settings-Page:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/xibo_rgraph/rgraph_module_page_3.png&#34; alt=&#34;JSON settings&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the second JSON-RPC Uri (and also post-data area) you can use all values from the first JSON-Response.
+If for example the first Call results in a Data-Structure like this: &lt;code&gt;Object { first: [val1, val2], second: { first: Hello, second: World } }&lt;/code&gt; and so on, you can use &lt;code&gt;${first[0]}&lt;/code&gt; for &lt;em&gt;val1&lt;/em&gt; or &lt;code&gt;${second.first} ${second.second}&lt;/code&gt; for a &lt;em&gt;Hello World&lt;/em&gt; in the URI and Post-Data.&lt;/p&gt;
+
+&lt;p&gt;On the last page, the Advaced panel, you can define to show a legend and position it. Depending on what you select the field disapear magically :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/xibo_rgraph/rgraph_module_page_4.png&#34; alt=&#34;Advanced settings&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The optional Javascript is for a mapping from Label-Keys to a human readable String. For Example there could be something like this when you request Data from SonarCube:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function getLabel(key) {
+    // This function is called for each Data-Stream you are going to visualize.
+    // Just make a simple &amp;quot;swicth-case&amp;quot; construct in here and return a human readable label for each data-stream key
+    switch (key) {
+        case &amp;quot;line_coverage&amp;quot;: return &amp;quot;Lines covered by UnitTests&amp;quot;;
+        case &amp;quot;branch_coverage&amp;quot;: return &amp;quot;Conditions covered by UnitTests&amp;quot;;
+        default: return key;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally you will see something like this in on the Layout-Page:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/xibo_rgraph/rgraph_module_preview.png&#34; alt=&#34;Layout Preview&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;developing&#34;&gt;Developing&lt;/h1&gt;
+
+&lt;p&gt;Developing a new custom module for Xibo id quite easy. There is a good documentation but more helpful for me where the eisting modules.&lt;/p&gt;
+
+&lt;p&gt;All in All this are the main steps:
+* Create a folder named like your module in the &lt;code&gt;custom&lt;/code&gt; Folder
+* Create a File in the &lt;code&gt;custom&lt;/code&gt; Folder named like &lt;code&gt;MODULE.json&lt;/code&gt; with Content like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;title&amp;quot;: &amp;quot;RGraph Data-Visualization&amp;quot;,
+  &amp;quot;author&amp;quot;: &amp;quot;Lukas Zurschmiede&amp;quot;,
+  &amp;quot;description&amp;quot;: &amp;quot;A module to visualize data from JSON or a local Datastore with a Graph.&amp;quot;,
+  &amp;quot;name&amp;quot;: &amp;quot;rgraph&amp;quot;,
+  &amp;quot;class&amp;quot;: &amp;quot;Xibo\\Custom\\MODULE\\MODULE&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you need 3rd-Party Libraries, create a Folder &lt;code&gt;web/vendor/MODULE&lt;/code&gt; and place all Files in there.&lt;/li&gt;
+&lt;li&gt;If you need images or other resources, place them in &lt;code&gt;web/modules/MODULE&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;In your &lt;code&gt;custom/MODULE&lt;/code&gt; Folder create the Class-File and the Template-Files:
+** Case sensitive: MODULE.php
+** Lower-Case: MODULE-form-add.twig
+** Lower-Case: MODULE-form-edit.twig
+** Optionally I think, Lower-Case: MODULE-form-settings.twig&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;files&#34;&gt;Files&lt;/h2&gt;
+
+&lt;p&gt;For example twig files check out the existing templates in the &lt;code&gt;modules&lt;/code&gt; Folder.&lt;/p&gt;
+
+&lt;p&gt;The built-in modules you find in the `` Folder.
+Basically a module has the following structure:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;namespace Xibo\Custom\MODULE;
+
+use InvalidArgumentException;
+use Respect\Validation\Validator as v;
+
+class MODULE extends \Xibo\Widget\ModuleWidget {
+	public $codeSchemaVersion = 1;
+	private $resourceFolder;
+	
+	/**
+	 * MODULE constructor.
+	 * @Override
+	 */
+	public function init() {
+		$this-&amp;gt;resourceFolder = PROJECT_ROOT . &#39;/web/modules/MODULE&#39;;
+		v::with(&#39;Xibo\\Validation\\Rules\\&#39;);
+	}
+	
+	/**
+	 * Install or Update this module
+	 * @param ModuleFactory $moduleFactory
+	 * @Override
+	 */
+	public function installOrUpdate($moduleFactory) {
+		// Install
+		if ($this-&amp;gt;module == null) {
+			$module = $moduleFactory-&amp;gt;createEmpty();
+			$module-&amp;gt;name = &#39;MODULE&#39;;
+			$module-&amp;gt;type = &#39;MODULE&#39;; // lower-case
+			$module-&amp;gt;viewPath = &#39;../custom/MODULE&#39;;
+			$module-&amp;gt;class = &#39;Xibo\Custom\MODULE\MODULE&#39;;
+			$module-&amp;gt;description = &#39;Graphical data visualization&#39;;
+			$module-&amp;gt;imageUri = &#39;forms/library.gif&#39;;
+			$module-&amp;gt;enabled = 1;
+			$module-&amp;gt;previewEnabled = 1;
+			$module-&amp;gt;assignable = 1;
+			$module-&amp;gt;regionSpecific = 1;
+			$module-&amp;gt;renderAs = &#39;html&#39;;
+			$module-&amp;gt;schemaVersion = $this-&amp;gt;codeSchemaVersion;
+			$module-&amp;gt;defaultDuration = 240;
+			$module-&amp;gt;settings = [];
+			$this-&amp;gt;setModule($module);
+			$this-&amp;gt;installModule();
+		}
+		// Check we are all installed
+		$this-&amp;gt;installFiles();
+	}
+	
+	/**
+	 * Install all 3rd-Party Files
+	 */
+	public function installFiles() {
+		$this-&amp;gt;mediaFactory-&amp;gt;createModuleSystemFile(PROJECT_ROOT . &#39;/web/modules/vendor/MODULE/....js&#39;)-&amp;gt;save();
+		$this-&amp;gt;mediaFactory-&amp;gt;createModuleSystemFile(PROJECT_ROOT . &#39;/web/modules/vendor/MODULE/....js&#39;)-&amp;gt;save();
+	}
+	
+	/**
+	 * Optional: Remove this method if there is no special settings form
+	 *
+	 * Form for updating the module settings
+	 * @return Name of the Settings-Form
+	 * @Override
+	 */
+	public function settingsForm() {
+		return &#39;module-form-settings&#39;;
+	}
+	
+	/**
+	 * Process any module settings
+	 * @return An array of the processed settings.
+	 * @Override
+	 */
+	public function settings() {
+		$this-&amp;gt;module-&amp;gt;settings[&#39;SETTING_NAME&#39;] = $this-&amp;gt;getSanitizer()-&amp;gt;getString(&#39;SETTING_NAME&#39;, ...);
+		$this-&amp;gt;module-&amp;gt;settings[&#39;SETTING_NAME&#39;] = $this-&amp;gt;getSanitizer()-&amp;gt;getString(&#39;SETTING_NAME&#39;, ...);
+		return $this-&amp;gt;module-&amp;gt;settings;
+	}
+	
+	/**
+	 * Validates the settings when saving a layout
+	 * @Override
+	 */
+	public function validate() {
+		if ($this-&amp;gt;getUseDuration() == 1 &amp;amp;&amp;amp; $this-&amp;gt;getDuration() == 0)
+			throw new InvalidArgumentException(__(&#39;You must enter a duration.&#39;));
+	}
+	/**
+	 * Adds a Widget
+	 * @Override
+	 */
+	public function add() {
+		$this-&amp;gt;setOption(&#39;name&#39;, $this-&amp;gt;getSanitizer()-&amp;gt;getString(&#39;name&#39;));
+		$this-&amp;gt;setUseDuration($this-&amp;gt;getSanitizer()-&amp;gt;getCheckbox(&#39;useDuration&#39;));
+		$this-&amp;gt;setDuration($this-&amp;gt;getSanitizer()-&amp;gt;getInt(&#39;duration&#39;, $this-&amp;gt;getDuration()));
+		
+		$this-&amp;gt;setOption(&#39;SETTING_NAME&#39;, $this-&amp;gt;getSanitizer()-&amp;gt;getString(&#39;SETTING_NAME&#39;));
+		$this-&amp;gt;setOption(&#39;SETTING_NAME&#39;, $this-&amp;gt;getSanitizer()-&amp;gt;getString(&#39;SETTING_NAME&#39;));
+		
+		$this-&amp;gt;validate();
+		$this-&amp;gt;saveWidget();
+	}
+	/**
+	 * Edit the Widget
+	 * @Override
+	 */
+	public function edit() {
+		$this-&amp;gt;setOption(&#39;name&#39;, $this-&amp;gt;getSanitizer()-&amp;gt;getString(&#39;name&#39;));
+		$this-&amp;gt;setUseDuration($this-&amp;gt;getSanitizer()-&amp;gt;getCheckbox(&#39;useDuration&#39;));
+		$this-&amp;gt;setDuration($this-&amp;gt;getSanitizer()-&amp;gt;getInt(&#39;duration&#39;, $this-&amp;gt;getDuration()));
+		
+		$this-&amp;gt;setOption(&#39;SETTING_NAME&#39;, $this-&amp;gt;getSanitizer()-&amp;gt;getString(&#39;SETTING_NAME&#39;));
+		$this-&amp;gt;setOption(&#39;SETTING_NAME&#39;, $this-&amp;gt;getSanitizer()-&amp;gt;getString(&#39;SETTING_NAME&#39;));
+		
+		$this-&amp;gt;validate();
+		$this-&amp;gt;saveWidget();
+	}
+	
+	/**
+	 * Preview code for a module
+	 * 
+	 * @param int $width
+	 * @param int $height
+	 * @param int $scaleOverride The Scale Override
+	 * @return string The Rendered Content
+	 * @Override
+	 */
+	public function preview($width, $height, $scaleOverride = 0) {
+		return $this-&amp;gt;previewAsClient($width, $height, $scaleOverride);
+	}
+	
+	/**
+	 * GetResource for the Graph page
+	 * 
+	 * @param int $displayId
+	 * @return mixed|string
+	 * @Override
+	 */
+	public function getResource($displayId = 0) {
+		// Load in the template
+		$data = [];
+		
+		// Replace the View Port Width?
+		$isPreview = ($this-&amp;gt;getSanitizer()-&amp;gt;getCheckbox(&#39;preview&#39;) == 1);
+		
+		// Replace the View Port Width?
+		$data[&#39;viewPortWidth&#39;] = ($isPreview) ? $this-&amp;gt;region-&amp;gt;width : &#39;[[ViewPortWidth]]&#39;;
+		
+		// Head Content contains all needed scrips from XY
+		$headContent  = &#39;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;&#39; . $this-&amp;gt;getResourceUrl(&#39;vendor/MODULE/....js&#39;) . &#39;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&#39;.&amp;quot;\n&amp;quot;;
+		$data[&#39;head&#39;] = $headContent;
+		
+		// Body content
+		$data[&#39;body&#39;] = &#39;&amp;lt;div id=&amp;quot;MODULE_Content_Whatever_&#39; . $displayId . &#39;&amp;quot;&amp;gt;
+			Put and create here your HTML
+		&amp;lt;/div&amp;gt;&#39;;
+		
+		// After body content - mostly XIBO-Stuff for scaling and so on
+		$javaScriptContent  = &#39;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;&#39; . $this-&amp;gt;getResourceUrl(&#39;vendor/jquery-1.11.1.min.js&#39;) . &#39;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&#39;;
+		$javaScriptContent .= &#39;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;&#39; . $this-&amp;gt;getResourceUrl(&#39;xibo-layout-scaler.js&#39;) . &#39;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&#39;;
+		$javaScriptContent .= &#39;&amp;lt;script&amp;gt;
+			$(document).ready(function() {
+				var options = &#39; . json_encode($options) . &#39;
+				$(&amp;quot;#&#39; . $containerId . &#39;&amp;quot;).xiboLayoutScaler(options);
+		});
+		
+		// Replace the After body Content
+		$data[&#39;javaScript&#39;] = $javaScriptContent;
+		return $this-&amp;gt;renderTemplate($data);
+	}
+	
+	/**
+	 * Returns if this module is valid or not.
+	 *   0 =&amp;gt; Invalid
+	 *   1 =&amp;gt; Valid
+	 *   2 =&amp;gt; Unknown
+	 * @return Validation-Level
+	 * @Override
+	 */
+	public function IsValid() {
+		// Can&#39;t be sure because the client does the rendering
+		return 2;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
   <title>
-    Prusa i4 mit einem RaspberryPi und OctoPrint // RANTA - Coding, Hacking and more
+    Prusa i4 mit einem RaspberryPi und OctoPrint // RANTA - Coding, Hacking, Teaching and more
   </title>
 
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -20,7 +20,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:url" content="http://ranta.ch/projects/Prusa_Raspberry_OctoPrint/" />
+<meta property="og:url" content="//ranta.ch/projects/Prusa_Raspberry_OctoPrint/" />
 
 
   
@@ -32,7 +32,7 @@
   
   
 
-  <link rel="stylesheet" href="http://ranta.ch//css/redlounge.css">
+  <link rel="stylesheet" href="//ranta.ch//css/redlounge.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
   
@@ -40,7 +40,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="RANTA - Coding, Hacking and more" />
+  <link href="" rel="alternate" type="application/rss+xml" title="RANTA - Coding, Hacking, Teaching and more" />
 
     
   <link rel="stylesheet" href="/css/styles/color-brewer.css">
@@ -74,9 +74,7 @@
 
     <nav class="nav">
       <ul class="nav-list">
-        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://ranta.ch/">Home</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/tutorials/Programming_Arduino_With_Kdevelop/">Adruino programmieren mit KDevelope</a></li>
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="//ranta.ch/">Home</a></li>
         
           <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts">Articles</a></li>
         
@@ -175,11 +173,11 @@
 			
 				<div class="post-categories">
 				
-					<a class="post-category post-category-projects" href="http://ranta.ch//categories/projects">Projects</a>
+					<a class="post-category post-category-projects" href="//ranta.ch//categories/projects">Projects</a>
 				
-					<a class="post-category post-category-robotics" href="http://ranta.ch//categories/robotics">Robotics</a>
+					<a class="post-category post-category-robotics" href="//ranta.ch//categories/robotics">Robotics</a>
 				
-					<a class="post-category post-category-3d-printing" href="http://ranta.ch//categories/3d-printing">3D-Printing</a>
+					<a class="post-category post-category-3d-printing" href="//ranta.ch//categories/3d-printing">3D-Printing</a>
 				
 				</div>
 			
@@ -194,8 +192,10 @@
 Also habe ich angefangen mir auf einem RaspberryPi selber etwas zusammen zu bastelnmit Pronterface und anderen Tools.
 So ganz zufrieden war ich aber nie wirklich&hellip;</p>
 
-<p>Seit dem Tag an dem ich nach einem Update von Slic3r die Optionen zu <a href="OctoPrint">http://octoprint.org/</a> gesehen habe, verwende und empfehle ich nur noch dieses Setup.
+<p>Seit dem Tag an dem ich nach einem Update von Slic3r die Optionen zu <a href="http://octoprint.org/">OctoPrint</a> gesehen habe, verwende und empfehle ich nur noch dieses Setup.
 Hier wie ich mein System aufgebaut habe - ein wenig Linux kenntnisse sind vorausgesetzt, vorallem wenn es um das installieren von paketen und Anhängigkeiten geht (die habe ich nicht mehr alle im Kopf).</p>
+
+<p><img src="/images/octoprint/octoprint_logo.png" alt="OctoPrint Logo" /></p>
 
 <h1 id="vorbereitungen">Vorbereitungen</h1>
 
@@ -270,7 +270,7 @@ $ apt-get upgrade
 
 <h1 id="webcam-mit-mjpg-streamer">Webcam mit MJPG-Streamer</h1>
 
-<p>Der Originale <a href="MJPG-Streamer">https://sourceforge.net/projects/mjpg-streamer/</a> unterstützt das Kamera-Modul vom RaspberryPi nicht, es gibt aber einen Fork von Liam Jackson unter GitHub: <a href="MJPEG-Streamer mit RaspiCam">https://github.com/jacksonliam/mjpg-streamer</a></p>
+<p>Der Originale <a href="https://sourceforge.net/projects/mjpg-streamer/">MJPG-Streamer</a> unterstützt das Kamera-Modul vom RaspberryPi nicht, es gibt aber einen Fork von Liam. Jackson unter GitHub: <a href="https://github.com/jacksonliam/mjpg-streamer">MJPEG-Streamer mit RaspiCam</a>.</p>
 
 <h2 id="installation">Installation</h2>
 
@@ -298,7 +298,7 @@ $ ./mjpeg-streamer -i &quot;./input_uvc.so&quot; -o &quot;./output_http.so -p 80
 
 <h1 id="octoprint-installieren">OctoPrint installieren</h1>
 
-<p>Die installation von <a href="OctoPrint">http://octoprint.org/</a> braucht relativ viele Python-Module welche einfach mittels <code>pip</code> installiert werden können. Das Problem dabei ist, dass bei einer normalen Raspbian-Installation das <code>/tmp</code> als <code>60MB tmpfs</code> gemountet wird, was im Normalfall total ausreichend ist.</p>
+<p>Die installation von <a href="http://octoprint.org/">OctoPrint</a> braucht relativ viele Python-Module welche einfach mittels <code>pip</code> installiert werden können. Das Problem dabei ist, dass bei einer normalen Raspbian-Installation das <code>/tmp</code> als <code>60MB tmpfs</code> gemountet wird, was im Normalfall total ausreichend ist.</p>
 
 <p>Für pip und die 10k Python-Module ist das jedoch zu wenig, deswegen:</p>
 
@@ -328,7 +328,7 @@ $ pip install -r requirements.txt
 
 <h2 id="octoprint-starten">OctoPrint starten</h2>
 
-<p>Sind alle Abhängigkeiten installiert, kann <a href="OctoPrint">http://octoprint.org/</a> gestartet werden:</p>
+<p>Sind alle Abhängigkeiten installiert, kann <a href="http://octoprint.org/">OctoPrint</a> gestartet werden:</p>
 
 <pre><code class="language-bash">$ cd /opt/OctoPrint
 $ ./run serve --iknowwhatimdoing --port 80
@@ -338,7 +338,7 @@ $ ./run serve --iknowwhatimdoing --port 80
 
 <h2 id="nützliche-einstellungen">Nützliche Einstellungen</h2>
 
-<p>Die Settings von <a href="OctoPrint">http://octoprint.org/</a> werden im Home des jeweiligen Benutzers gespeichert: <code>~/.octoprint/config.yaml</code></p>
+<p>Die Settings von <a href="http://octoprint.org/">OctoPrint</a> werden im Home des jeweiligen Benutzers gespeichert: <code>~/.octoprint/config.yaml</code></p>
 
 <h3 id="zugangsbeschränkung">Zugangsbeschränkung</h3>
 
@@ -368,14 +368,14 @@ $ ./run serve --iknowwhatimdoing --port 80
 
 <h2 id="plugins">Plugins</h2>
 
-<p>OctoPrint kann mit vielen <a href="OctoPrint">http://plugins.octoprint.org/</a> ausgestattet werden. Sinnvolle und Sinnlose :)</p>
+<p>OctoPrint kann mit vielen <a href="http://plugins.octoprint.org/">Plugins</a> ausgestattet werden. Sinnvolle und Sinnlose :)</p>
 
 <h3 id="telegram">Telegram</h3>
 
 <p>Um ein komplett autonomes System zu haben, welches man auch mal ein paar Stundenunbeaufsichtigt laufen lassen kann, bietet sich das Telegram-Plugin an.</p>
 
 <p><strong>Unter:</strong> Einstellungen -&gt; PluginManager -&gt; Mehr&hellip;
-Nach dem Plungin <em>Telegram</em> suchen und installieren. Wie man den Telegram-Bot erstellt wird gut auf der GitHub-Seite erklärt: <a href="Create Telegram Bot">https://github.com/fabianonline/OctoPrint-Telegram/blob/stable/README.md#create-telegram-bot</a></p>
+Nach dem Plungin <em>Telegram</em> suchen und installieren. Wie man den Telegram-Bot erstellt wird gut auf der GitHub-Seite erklärt: <a href="https://github.com/fabianonline/OctoPrint-Telegram/blob/stable/README.md#create-telegram-bot">Create Telegram Bot</a>.</p>
 
 <p>Wenn der Bot erstellt ist, meine Empfehlung ist dass man die Group und Privacy Dinger abstellt, kann man nach dem eigenen Bot suchen und per Kommando <code>/start</code> anfangen mit dem Bot zu sprechen. Jeden benutzer und jede Gruppe in welche man den Bot haben will, muss man dann noch in den OctoPrint Einstellungen freischalten: <strong>Unter:</strong> Einstellungen -&gt; Plugins -&gt; Telegram</p>
 
@@ -469,7 +469,7 @@ Anschliessend mit den Debian üblichen Tools das ganze automatisch in die Start-
 
 <h1 id="slic3r-integration">Slic3r Integration</h1>
 
-<p>Um den ganzen Prozess zu vereinfachen, kann man bei <a href="Slic3r">http://slic3r.org/</a> ab Version 1.9.2 (oder schon früher) den <a href="OctoPrint">http://octoprint.org/</a>-Server als Option eingeben und anschliessend wenn man alles plaziert hat, den gCode direkt auf den Server laden. Anschliessend muss man dann nur noch im WebInterface das File auswählen und drucken.</p>
+<p>Um den ganzen Prozess zu vereinfachen, kann man bei <a href="http://slic3r.org/">Slic3r</a> ab Version 1.9.2 (oder schon früher) den <a href="http://octoprint.org/">OctoPrint</a>-Server als Option eingeben und anschliessend wenn man alles plaziert hat, den gCode direkt auf den Server laden. Anschliessend muss man dann nur noch im WebInterface das File auswählen und drucken.</p>
 
 <p>Dazu wechselt man in Slic3r auf den Tab <em>Printer Settings</em> und gibt dort bei <em>OctoPrint upload</em> den Host und API-Key an.
 Den API-Key kann man auf dem Webinterface in den Einstellungen einsehen und neu generieren.</p>
@@ -483,15 +483,15 @@ Den API-Key kann man auf dem Webinterface in den Einstellungen einsehen und neu 
 				<div class="tags-list">
 					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
 					
-	                <a class="post-tag post-tag-projects" href="http://ranta.ch//tags/projects">Projects</a>,
+	                <a class="post-tag post-tag-projects" href="//ranta.ch//tags/projects">Projects</a>,
 	                
-	                <a class="post-tag post-tag-robotics" href="http://ranta.ch//tags/robotics">Robotics</a>,
+	                <a class="post-tag post-tag-robotics" href="//ranta.ch//tags/robotics">Robotics</a>,
 	                
-	                <a class="post-tag post-tag-raspberrypi" href="http://ranta.ch//tags/raspberrypi">RaspberryPi</a>,
+	                <a class="post-tag post-tag-raspberrypi" href="//ranta.ch//tags/raspberrypi">RaspberryPi</a>,
 	                
-	                <a class="post-tag post-tag-octoprint" href="http://ranta.ch//tags/octoprint">OctoPrint</a>,
+	                <a class="post-tag post-tag-octoprint" href="//ranta.ch//tags/octoprint">OctoPrint</a>,
 	                
-	                <a class="post-tag post-tag-configuration" href="http://ranta.ch//tags/configuration">Configuration</a>,
+	                <a class="post-tag post-tag-configuration" href="//ranta.ch//tags/configuration">Configuration</a>,
 	                
 				</div>
 			

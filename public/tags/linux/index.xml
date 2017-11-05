@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on RANTA - Coding, Hacking and more</title>
-    <link>http://ranta.ch/tags/linux/index.xml</link>
-    <description>Recent content in Linux on RANTA - Coding, Hacking and more</description>
+    <title>Linux on RANTA - Coding, Hacking, Teaching and more</title>
+    <link>//ranta.ch/tags/linux/index.xml</link>
+    <description>Recent content in Linux on RANTA - Coding, Hacking, Teaching and more</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-ch</language>
-    <atom:link href="http://ranta.ch/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//ranta.ch/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Adruino programmieren mit KDevelope</title>
-      <link>http://ranta.ch/tutorials/Programming_Arduino_With_Kdevelop/</link>
+      <link>//ranta.ch/tutorials/Programming_Arduino_With_Kdevelop/</link>
       <pubDate>Sun, 05 Mar 2017 10:41:12 +0100</pubDate>
       
-      <guid>http://ranta.ch/tutorials/Programming_Arduino_With_Kdevelop/</guid>
+      <guid>//ranta.ch/tutorials/Programming_Arduino_With_Kdevelop/</guid>
       <description>
 
 &lt;p&gt;Wie jeder Programmierer hat man seinen eigenen Favoriten was die Entwicklungsumgebung angeht. Das ist bei mir Slackware64-current mit KWrite und KDevelop, sowie Yakuake als Konsole - und definitiv nicht das grauslige Java-Arduino-Studio :)&lt;/p&gt;
 
-&lt;p&gt;Einen Allgemeinen Artikel wie man das zusammenbringt findet man auf dem &lt;a href=&#34;Arduino Playground&#34;&gt;http://playground.arduino.cc/Code/Kdevelop&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Einen Allgemeinen Artikel wie man das zusammenbringt findet man auf dem &lt;a href=&#34;http://playground.arduino.cc/Code/Kdevelop&#34;&gt;Arduino Playground&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR;&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;KDevelop installieren&lt;/li&gt;
 &lt;li&gt;Die AVR-Toolchain installieren&lt;/li&gt;
-&lt;li&gt;Die neuste &lt;code&gt;adruino.zip&lt;/code&gt; herunterladen: &lt;a href=&#34;New Template for Kdevelop/CMake for Arduino 1.0&#34;&gt;http://forum.arduino.cc/index.php?topic=244741.0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Die neuste &lt;code&gt;adruino.zip&lt;/code&gt; herunterladen: &lt;a href=&#34;http://forum.arduino.cc/index.php?topic=244741.0&#34;&gt;New Template for Kdevelop/CMake for Arduino 1.0&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Entpacken und als tar.bz2 neu verpacken: &lt;code&gt;unzip arduino.zip &amp;amp;&amp;amp; cd arduino &amp;amp;&amp;amp; tar -cjf ../arduino.tar.bz2 .&lt;/code&gt;
 3.1 Für alle nach &lt;code&gt;/usr/share/[kde4/]apps/kdevappwizard/templates/&lt;/code&gt; kopieren
 3.2 Oder als Egomane nach &lt;code&gt;~/.kde/share/apps/kdevappwizard/templates/&lt;/code&gt; kopieren&lt;/li&gt;
@@ -36,7 +36,7 @@
 
 &lt;h2 id=&#34;die-komplette-avr-toolchain-installieren&#34;&gt;Die komplette AVR-Toolchain installieren&lt;/h2&gt;
 
-&lt;p&gt;Bei Slackware geht das am einfachsten über &lt;a href=&#34;SlackBuilds dot org&#34;&gt;https://slackbuilds.org/&lt;/a&gt;, andere Distributionen haben das schon im Package-Manager enthalten.&lt;/p&gt;
+&lt;p&gt;Bei Slackware geht das am einfachsten über &lt;a href=&#34;https://slackbuilds.org/&#34;&gt;SlackBuilds.org&lt;/a&gt;, andere Distributionen haben das schon im Package-Manager enthalten.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;avr-binutils&lt;/code&gt; Benötigte Tools für das Cross-Compiling&lt;/li&gt;
@@ -50,7 +50,7 @@
 
 &lt;h2 id=&#34;kdevelop-templates&#34;&gt;KDevelop Templates&lt;/h2&gt;
 
-&lt;p&gt;Zuerst braucht man das neuste &lt;code&gt;arduino.zip&lt;/code&gt; aus dem Thread &lt;a href=&#34;New Template for Kdevelop/CMake for Arduino 1.0&#34;&gt;http://forum.arduino.cc/index.php?topic=244741.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Zuerst braucht man das neuste &lt;code&gt;arduino.zip&lt;/code&gt; aus dem Thread &lt;a href=&#34;http://forum.arduino.cc/index.php?topic=244741.0&#34;&gt;New Template for Kdevelop/CMake for Arduino 1.0&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Dieses zip muss man neu packen als &lt;code&gt;tar.bz2&lt;/code&gt;, also entpacken und neu verpacken: &lt;code&gt;unzip arduino.zip &amp;amp;&amp;amp; cd arduino &amp;amp;&amp;amp; tar -cjf ../arduino.tar.bz2 .&lt;/code&gt;&lt;/p&gt;
 
@@ -59,14 +59,17 @@ Will man das Template nur für sich, dann kann man es nach &lt;code&gt;~/.kde/sh
 
 &lt;h2 id=&#34;neues-projekt&#34;&gt;Neues Projekt&lt;/h2&gt;
 
-&lt;p&gt;Startet man KDevelop und erstellt ein neues Projekt, hat man unter dem Punkt &lt;strong&gt;C/C++&lt;/strong&gt; nun das Template &lt;strong&gt;Arduino&lt;/strong&gt; welches man verwenden kann.
-&lt;img src=&#34;http://ranta.ch/images/tutorials/kdevelope_arduino_new_project.png&#34; alt=&#34;KDevelop New Project Wizard&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Startet man KDevelop und erstellt ein neues Projekt, hat man unter dem Punkt &lt;strong&gt;C/C++&lt;/strong&gt; nun das Template &lt;strong&gt;Arduino&lt;/strong&gt; welches man verwenden kann.&lt;/p&gt;
 
-&lt;p&gt;Nachdem das Projekt erstellt wurde, hat man ein neues Demo-File und ein paar Libraries welche man gut gebrauchen kann.
-&lt;img src=&#34;http://ranta.ch/images/tutorials/kdevelope_arduino_new_project_files.png&#34; alt=&#34;KDevelop Project Structure&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/tutorials/kdevelope_arduino_new_project.png&#34; alt=&#34;KDevelop New Project Wizard&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Damit die includes gefunden werden, muss noch der avr-include Path konfiguriert werden. Das macht man am einfachsten über die Project-Settings, wo man den Pfad &lt;code&gt;/usr/avr/include/&lt;/code&gt; hinzufügt:
-&lt;img src=&#34;http://ranta.ch/images/tutorials/kdevelope_arduino_new_project_settings.png&#34; alt=&#34;KDevelop Project Structure&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Nachdem das Projekt erstellt wurde, hat man ein neues Demo-File und ein paar Libraries welche man gut gebrauchen kann.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/tutorials/kdevelope_arduino_new_project_files.png&#34; alt=&#34;KDevelop Project Structure&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Damit die includes gefunden werden, muss noch der avr-include Path konfiguriert werden. Das macht man am einfachsten über die Project-Settings, wo man den Pfad &lt;code&gt;/usr/avr/include/&lt;/code&gt; hinzufügt:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/tutorials/kdevelope_arduino_new_project_settings.png&#34; alt=&#34;KDevelop Project Structure&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Was man nun noch anpassen muss ist die &lt;code&gt;CMakeLists.txt&lt;/code&gt; mit einer eigenen Konfig unter dem &lt;code&gt;platform&lt;/code&gt; Ordner (analog zu dem schon bestehenden &lt;code&gt;arduino_leonardo&lt;/code&gt;) oder man importiert die &lt;code&gt;libarduino.cmake&lt;/code&gt; und definiert seine eigenen Parameter:&lt;/p&gt;
 

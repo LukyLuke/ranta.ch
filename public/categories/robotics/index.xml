@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Robotics on RANTA - Coding, Hacking and more</title>
-    <link>http://ranta.ch/categories/robotics/index.xml</link>
-    <description>Recent content in Robotics on RANTA - Coding, Hacking and more</description>
+    <title>Robotics on RANTA - Coding, Hacking, Teaching and more</title>
+    <link>//ranta.ch/categories/robotics/index.xml</link>
+    <description>Recent content in Robotics on RANTA - Coding, Hacking, Teaching and more</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-ch</language>
-    <atom:link href="http://ranta.ch/categories/robotics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//ranta.ch/categories/robotics/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Adruino programmieren mit KDevelope</title>
-      <link>http://ranta.ch/tutorials/Programming_Arduino_With_Kdevelop/</link>
+      <link>//ranta.ch/tutorials/Programming_Arduino_With_Kdevelop/</link>
       <pubDate>Sun, 05 Mar 2017 10:41:12 +0100</pubDate>
       
-      <guid>http://ranta.ch/tutorials/Programming_Arduino_With_Kdevelop/</guid>
+      <guid>//ranta.ch/tutorials/Programming_Arduino_With_Kdevelop/</guid>
       <description>
 
 &lt;p&gt;Wie jeder Programmierer hat man seinen eigenen Favoriten was die Entwicklungsumgebung angeht. Das ist bei mir Slackware64-current mit KWrite und KDevelop, sowie Yakuake als Konsole - und definitiv nicht das grauslige Java-Arduino-Studio :)&lt;/p&gt;
 
-&lt;p&gt;Einen Allgemeinen Artikel wie man das zusammenbringt findet man auf dem &lt;a href=&#34;Arduino Playground&#34;&gt;http://playground.arduino.cc/Code/Kdevelop&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Einen Allgemeinen Artikel wie man das zusammenbringt findet man auf dem &lt;a href=&#34;http://playground.arduino.cc/Code/Kdevelop&#34;&gt;Arduino Playground&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR;&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;KDevelop installieren&lt;/li&gt;
 &lt;li&gt;Die AVR-Toolchain installieren&lt;/li&gt;
-&lt;li&gt;Die neuste &lt;code&gt;adruino.zip&lt;/code&gt; herunterladen: &lt;a href=&#34;New Template for Kdevelop/CMake for Arduino 1.0&#34;&gt;http://forum.arduino.cc/index.php?topic=244741.0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Die neuste &lt;code&gt;adruino.zip&lt;/code&gt; herunterladen: &lt;a href=&#34;http://forum.arduino.cc/index.php?topic=244741.0&#34;&gt;New Template for Kdevelop/CMake for Arduino 1.0&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Entpacken und als tar.bz2 neu verpacken: &lt;code&gt;unzip arduino.zip &amp;amp;&amp;amp; cd arduino &amp;amp;&amp;amp; tar -cjf ../arduino.tar.bz2 .&lt;/code&gt;
 3.1 Für alle nach &lt;code&gt;/usr/share/[kde4/]apps/kdevappwizard/templates/&lt;/code&gt; kopieren
 3.2 Oder als Egomane nach &lt;code&gt;~/.kde/share/apps/kdevappwizard/templates/&lt;/code&gt; kopieren&lt;/li&gt;
@@ -36,7 +36,7 @@
 
 &lt;h2 id=&#34;die-komplette-avr-toolchain-installieren&#34;&gt;Die komplette AVR-Toolchain installieren&lt;/h2&gt;
 
-&lt;p&gt;Bei Slackware geht das am einfachsten über &lt;a href=&#34;SlackBuilds dot org&#34;&gt;https://slackbuilds.org/&lt;/a&gt;, andere Distributionen haben das schon im Package-Manager enthalten.&lt;/p&gt;
+&lt;p&gt;Bei Slackware geht das am einfachsten über &lt;a href=&#34;https://slackbuilds.org/&#34;&gt;SlackBuilds.org&lt;/a&gt;, andere Distributionen haben das schon im Package-Manager enthalten.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;avr-binutils&lt;/code&gt; Benötigte Tools für das Cross-Compiling&lt;/li&gt;
@@ -50,7 +50,7 @@
 
 &lt;h2 id=&#34;kdevelop-templates&#34;&gt;KDevelop Templates&lt;/h2&gt;
 
-&lt;p&gt;Zuerst braucht man das neuste &lt;code&gt;arduino.zip&lt;/code&gt; aus dem Thread &lt;a href=&#34;New Template for Kdevelop/CMake for Arduino 1.0&#34;&gt;http://forum.arduino.cc/index.php?topic=244741.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Zuerst braucht man das neuste &lt;code&gt;arduino.zip&lt;/code&gt; aus dem Thread &lt;a href=&#34;http://forum.arduino.cc/index.php?topic=244741.0&#34;&gt;New Template for Kdevelop/CMake for Arduino 1.0&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Dieses zip muss man neu packen als &lt;code&gt;tar.bz2&lt;/code&gt;, also entpacken und neu verpacken: &lt;code&gt;unzip arduino.zip &amp;amp;&amp;amp; cd arduino &amp;amp;&amp;amp; tar -cjf ../arduino.tar.bz2 .&lt;/code&gt;&lt;/p&gt;
 
@@ -59,14 +59,17 @@ Will man das Template nur für sich, dann kann man es nach &lt;code&gt;~/.kde/sh
 
 &lt;h2 id=&#34;neues-projekt&#34;&gt;Neues Projekt&lt;/h2&gt;
 
-&lt;p&gt;Startet man KDevelop und erstellt ein neues Projekt, hat man unter dem Punkt &lt;strong&gt;C/C++&lt;/strong&gt; nun das Template &lt;strong&gt;Arduino&lt;/strong&gt; welches man verwenden kann.
-&lt;img src=&#34;http://ranta.ch/images/tutorials/kdevelope_arduino_new_project.png&#34; alt=&#34;KDevelop New Project Wizard&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Startet man KDevelop und erstellt ein neues Projekt, hat man unter dem Punkt &lt;strong&gt;C/C++&lt;/strong&gt; nun das Template &lt;strong&gt;Arduino&lt;/strong&gt; welches man verwenden kann.&lt;/p&gt;
 
-&lt;p&gt;Nachdem das Projekt erstellt wurde, hat man ein neues Demo-File und ein paar Libraries welche man gut gebrauchen kann.
-&lt;img src=&#34;http://ranta.ch/images/tutorials/kdevelope_arduino_new_project_files.png&#34; alt=&#34;KDevelop Project Structure&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/tutorials/kdevelope_arduino_new_project.png&#34; alt=&#34;KDevelop New Project Wizard&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Damit die includes gefunden werden, muss noch der avr-include Path konfiguriert werden. Das macht man am einfachsten über die Project-Settings, wo man den Pfad &lt;code&gt;/usr/avr/include/&lt;/code&gt; hinzufügt:
-&lt;img src=&#34;http://ranta.ch/images/tutorials/kdevelope_arduino_new_project_settings.png&#34; alt=&#34;KDevelop Project Structure&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Nachdem das Projekt erstellt wurde, hat man ein neues Demo-File und ein paar Libraries welche man gut gebrauchen kann.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/tutorials/kdevelope_arduino_new_project_files.png&#34; alt=&#34;KDevelop Project Structure&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Damit die includes gefunden werden, muss noch der avr-include Path konfiguriert werden. Das macht man am einfachsten über die Project-Settings, wo man den Pfad &lt;code&gt;/usr/avr/include/&lt;/code&gt; hinzufügt:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/tutorials/kdevelope_arduino_new_project_settings.png&#34; alt=&#34;KDevelop Project Structure&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Was man nun noch anpassen muss ist die &lt;code&gt;CMakeLists.txt&lt;/code&gt; mit einer eigenen Konfig unter dem &lt;code&gt;platform&lt;/code&gt; Ordner (analog zu dem schon bestehenden &lt;code&gt;arduino_leonardo&lt;/code&gt;) oder man importiert die &lt;code&gt;libarduino.cmake&lt;/code&gt; und definiert seine eigenen Parameter:&lt;/p&gt;
 
@@ -89,18 +92,20 @@ include(${CMAKE_SOURCE_DIR}/platforms/libarduino.cmake)
     
     <item>
       <title>Prusa i4 mit einem RaspberryPi und OctoPrint</title>
-      <link>http://ranta.ch/projects/Prusa_Raspberry_OctoPrint/</link>
+      <link>//ranta.ch/projects/Prusa_Raspberry_OctoPrint/</link>
       <pubDate>Sat, 04 Mar 2017 09:00:24 +0100</pubDate>
       
-      <guid>http://ranta.ch/projects/Prusa_Raspberry_OctoPrint/</guid>
+      <guid>//ranta.ch/projects/Prusa_Raspberry_OctoPrint/</guid>
       <description>
 
 &lt;p&gt;Um meinen 3D-Drucker, ein Prusa i4, sinnvoll zu verwenden, habe ich immer nach einer optimalen, autonomen Lösung gesucht, bei welcher ich einfach meine Modelle hochladen kann und der Rest +passiert+ einfach so von alleine.
 Also habe ich angefangen mir auf einem RaspberryPi selber etwas zusammen zu bastelnmit Pronterface und anderen Tools.
 So ganz zufrieden war ich aber nie wirklich&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;Seit dem Tag an dem ich nach einem Update von Slic3r die Optionen zu &lt;a href=&#34;OctoPrint&#34;&gt;http://octoprint.org/&lt;/a&gt; gesehen habe, verwende und empfehle ich nur noch dieses Setup.
+&lt;p&gt;Seit dem Tag an dem ich nach einem Update von Slic3r die Optionen zu &lt;a href=&#34;http://octoprint.org/&#34;&gt;OctoPrint&lt;/a&gt; gesehen habe, verwende und empfehle ich nur noch dieses Setup.
 Hier wie ich mein System aufgebaut habe - ein wenig Linux kenntnisse sind vorausgesetzt, vorallem wenn es um das installieren von paketen und Anhängigkeiten geht (die habe ich nicht mehr alle im Kopf).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//ranta.ch/images/octoprint/octoprint_logo.png&#34; alt=&#34;OctoPrint Logo&#34; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;vorbereitungen&#34;&gt;Vorbereitungen&lt;/h1&gt;
 
@@ -175,7 +180,7 @@ $ apt-get upgrade
 
 &lt;h1 id=&#34;webcam-mit-mjpg-streamer&#34;&gt;Webcam mit MJPG-Streamer&lt;/h1&gt;
 
-&lt;p&gt;Der Originale &lt;a href=&#34;MJPG-Streamer&#34;&gt;https://sourceforge.net/projects/mjpg-streamer/&lt;/a&gt; unterstützt das Kamera-Modul vom RaspberryPi nicht, es gibt aber einen Fork von Liam Jackson unter GitHub: &lt;a href=&#34;MJPEG-Streamer mit RaspiCam&#34;&gt;https://github.com/jacksonliam/mjpg-streamer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Der Originale &lt;a href=&#34;https://sourceforge.net/projects/mjpg-streamer/&#34;&gt;MJPG-Streamer&lt;/a&gt; unterstützt das Kamera-Modul vom RaspberryPi nicht, es gibt aber einen Fork von Liam. Jackson unter GitHub: &lt;a href=&#34;https://github.com/jacksonliam/mjpg-streamer&#34;&gt;MJPEG-Streamer mit RaspiCam&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 
@@ -203,7 +208,7 @@ $ ./mjpeg-streamer -i &amp;quot;./input_uvc.so&amp;quot; -o &amp;quot;./output_h
 
 &lt;h1 id=&#34;octoprint-installieren&#34;&gt;OctoPrint installieren&lt;/h1&gt;
 
-&lt;p&gt;Die installation von &lt;a href=&#34;OctoPrint&#34;&gt;http://octoprint.org/&lt;/a&gt; braucht relativ viele Python-Module welche einfach mittels &lt;code&gt;pip&lt;/code&gt; installiert werden können. Das Problem dabei ist, dass bei einer normalen Raspbian-Installation das &lt;code&gt;/tmp&lt;/code&gt; als &lt;code&gt;60MB tmpfs&lt;/code&gt; gemountet wird, was im Normalfall total ausreichend ist.&lt;/p&gt;
+&lt;p&gt;Die installation von &lt;a href=&#34;http://octoprint.org/&#34;&gt;OctoPrint&lt;/a&gt; braucht relativ viele Python-Module welche einfach mittels &lt;code&gt;pip&lt;/code&gt; installiert werden können. Das Problem dabei ist, dass bei einer normalen Raspbian-Installation das &lt;code&gt;/tmp&lt;/code&gt; als &lt;code&gt;60MB tmpfs&lt;/code&gt; gemountet wird, was im Normalfall total ausreichend ist.&lt;/p&gt;
 
 &lt;p&gt;Für pip und die 10k Python-Module ist das jedoch zu wenig, deswegen:&lt;/p&gt;
 
@@ -233,7 +238,7 @@ $ pip install -r requirements.txt
 
 &lt;h2 id=&#34;octoprint-starten&#34;&gt;OctoPrint starten&lt;/h2&gt;
 
-&lt;p&gt;Sind alle Abhängigkeiten installiert, kann &lt;a href=&#34;OctoPrint&#34;&gt;http://octoprint.org/&lt;/a&gt; gestartet werden:&lt;/p&gt;
+&lt;p&gt;Sind alle Abhängigkeiten installiert, kann &lt;a href=&#34;http://octoprint.org/&#34;&gt;OctoPrint&lt;/a&gt; gestartet werden:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /opt/OctoPrint
 $ ./run serve --iknowwhatimdoing --port 80
@@ -243,7 +248,7 @@ $ ./run serve --iknowwhatimdoing --port 80
 
 &lt;h2 id=&#34;nützliche-einstellungen&#34;&gt;Nützliche Einstellungen&lt;/h2&gt;
 
-&lt;p&gt;Die Settings von &lt;a href=&#34;OctoPrint&#34;&gt;http://octoprint.org/&lt;/a&gt; werden im Home des jeweiligen Benutzers gespeichert: &lt;code&gt;~/.octoprint/config.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Die Settings von &lt;a href=&#34;http://octoprint.org/&#34;&gt;OctoPrint&lt;/a&gt; werden im Home des jeweiligen Benutzers gespeichert: &lt;code&gt;~/.octoprint/config.yaml&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;zugangsbeschränkung&#34;&gt;Zugangsbeschränkung&lt;/h3&gt;
 
@@ -273,14 +278,14 @@ $ ./run serve --iknowwhatimdoing --port 80
 
 &lt;h2 id=&#34;plugins&#34;&gt;Plugins&lt;/h2&gt;
 
-&lt;p&gt;OctoPrint kann mit vielen &lt;a href=&#34;OctoPrint&#34;&gt;http://plugins.octoprint.org/&lt;/a&gt; ausgestattet werden. Sinnvolle und Sinnlose :)&lt;/p&gt;
+&lt;p&gt;OctoPrint kann mit vielen &lt;a href=&#34;http://plugins.octoprint.org/&#34;&gt;Plugins&lt;/a&gt; ausgestattet werden. Sinnvolle und Sinnlose :)&lt;/p&gt;
 
 &lt;h3 id=&#34;telegram&#34;&gt;Telegram&lt;/h3&gt;
 
 &lt;p&gt;Um ein komplett autonomes System zu haben, welches man auch mal ein paar Stundenunbeaufsichtigt laufen lassen kann, bietet sich das Telegram-Plugin an.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Unter:&lt;/strong&gt; Einstellungen -&amp;gt; PluginManager -&amp;gt; Mehr&amp;hellip;
-Nach dem Plungin &lt;em&gt;Telegram&lt;/em&gt; suchen und installieren. Wie man den Telegram-Bot erstellt wird gut auf der GitHub-Seite erklärt: &lt;a href=&#34;Create Telegram Bot&#34;&gt;https://github.com/fabianonline/OctoPrint-Telegram/blob/stable/README.md#create-telegram-bot&lt;/a&gt;&lt;/p&gt;
+Nach dem Plungin &lt;em&gt;Telegram&lt;/em&gt; suchen und installieren. Wie man den Telegram-Bot erstellt wird gut auf der GitHub-Seite erklärt: &lt;a href=&#34;https://github.com/fabianonline/OctoPrint-Telegram/blob/stable/README.md#create-telegram-bot&#34;&gt;Create Telegram Bot&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Wenn der Bot erstellt ist, meine Empfehlung ist dass man die Group und Privacy Dinger abstellt, kann man nach dem eigenen Bot suchen und per Kommando &lt;code&gt;/start&lt;/code&gt; anfangen mit dem Bot zu sprechen. Jeden benutzer und jede Gruppe in welche man den Bot haben will, muss man dann noch in den OctoPrint Einstellungen freischalten: &lt;strong&gt;Unter:&lt;/strong&gt; Einstellungen -&amp;gt; Plugins -&amp;gt; Telegram&lt;/p&gt;
 
@@ -374,7 +379,7 @@ Anschliessend mit den Debian üblichen Tools das ganze automatisch in die Start-
 
 &lt;h1 id=&#34;slic3r-integration&#34;&gt;Slic3r Integration&lt;/h1&gt;
 
-&lt;p&gt;Um den ganzen Prozess zu vereinfachen, kann man bei &lt;a href=&#34;Slic3r&#34;&gt;http://slic3r.org/&lt;/a&gt; ab Version 1.9.2 (oder schon früher) den &lt;a href=&#34;OctoPrint&#34;&gt;http://octoprint.org/&lt;/a&gt;-Server als Option eingeben und anschliessend wenn man alles plaziert hat, den gCode direkt auf den Server laden. Anschliessend muss man dann nur noch im WebInterface das File auswählen und drucken.&lt;/p&gt;
+&lt;p&gt;Um den ganzen Prozess zu vereinfachen, kann man bei &lt;a href=&#34;http://slic3r.org/&#34;&gt;Slic3r&lt;/a&gt; ab Version 1.9.2 (oder schon früher) den &lt;a href=&#34;http://octoprint.org/&#34;&gt;OctoPrint&lt;/a&gt;-Server als Option eingeben und anschliessend wenn man alles plaziert hat, den gCode direkt auf den Server laden. Anschliessend muss man dann nur noch im WebInterface das File auswählen und drucken.&lt;/p&gt;
 
 &lt;p&gt;Dazu wechselt man in Slic3r auf den Tab &lt;em&gt;Printer Settings&lt;/em&gt; und gibt dort bei &lt;em&gt;OctoPrint upload&lt;/em&gt; den Host und API-Key an.
 Den API-Key kann man auf dem Webinterface in den Einstellungen einsehen und neu generieren.&lt;/p&gt;

@@ -2,199 +2,293 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://ranta.ch/tutorials/Programming_Arduino_With_Kdevelop/</loc>
+    <loc>//ranta.ch/tutorials/ESP-32-Initial/</loc>
+    <lastmod>2017-08-17T18:45:59+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/projects/xibo_digital_signage_graph_module/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tutorials/Programming_Arduino_With_Kdevelop/</loc>
     <lastmod>2017-03-05T10:41:12+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ranta.ch/projects/Prusa_Raspberry_OctoPrint/</loc>
+    <loc>//ranta.ch/projects/Prusa_Raspberry_OctoPrint/</loc>
     <lastmod>2017-03-04T09:00:24+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tutorials/matlab-part-3/</loc>
+    <loc>//ranta.ch/tutorials/matlab-part-3/</loc>
     <lastmod>2017-02-19T12:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tutorials/matlab-part-2/</loc>
+    <loc>//ranta.ch/tutorials/matlab-part-2/</loc>
     <lastmod>2017-02-19T11:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tutorials/matlab-part-1/</loc>
+    <loc>//ranta.ch/tutorials/matlab-part-1/</loc>
     <lastmod>2017-02-19T10:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ranta.ch/categories/3d-printing/</loc>
+    <loc>//ranta.ch/categories/3d-printing/</loc>
     <lastmod>2017-03-04T09:00:24+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/arduino/</loc>
-    <lastmod>2017-03-05T10:41:12+01:00</lastmod>
+    <loc>//ranta.ch/tags/arduino/</loc>
+    <lastmod>2017-08-17T18:45:59+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/categories/</loc>
+    <loc>//ranta.ch/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/coding/</loc>
+    <loc>//ranta.ch/tags/coding/</loc>
     <lastmod>2017-02-19T12:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/configuration/</loc>
+    <loc>//ranta.ch/tags/configuration/</loc>
     <lastmod>2017-03-04T09:00:24+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/development/</loc>
+    <loc>//ranta.ch/tags/development/</loc>
+    <lastmod>2017-08-17T18:45:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/categories/development/</loc>
+    <lastmod>2017-08-17T18:45:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/digitale/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/esp-32/</loc>
+    <lastmod>2017-08-17T18:45:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/categories/esp-32/</loc>
+    <lastmod>2017-08-17T18:45:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/esp-wroom-32/</loc>
+    <lastmod>2017-08-17T18:45:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/graph/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/javascript/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/kdevelope/</loc>
     <lastmod>2017-03-05T10:41:12+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/categories/development/</loc>
-    <lastmod>2017-03-05T10:41:12+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://ranta.ch/tags/kdevelope/</loc>
-    <lastmod>2017-03-05T10:41:12+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://ranta.ch/categories/lernen/</loc>
+    <loc>//ranta.ch/categories/lernen/</loc>
     <lastmod>2017-02-19T12:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/linux/</loc>
+    <loc>//ranta.ch/tags/linux/</loc>
     <lastmod>2017-03-05T10:41:12+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/categories/linux/</loc>
+    <loc>//ranta.ch/categories/linux/</loc>
     <lastmod>2017-03-05T10:41:12+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/matlab/</loc>
+    <loc>//ranta.ch/tags/matlab/</loc>
     <lastmod>2017-02-19T12:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/categories/matlab/</loc>
+    <loc>//ranta.ch/categories/matlab/</loc>
     <lastmod>2017-02-19T12:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/matrizen/</loc>
+    <loc>//ranta.ch/tags/matrizen/</loc>
     <lastmod>2017-02-19T12:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/octoprint/</loc>
+    <loc>//ranta.ch/tags/mit/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/module/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/octoprint/</loc>
     <lastmod>2017-03-04T09:00:24+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/categories/programmieren/</loc>
+    <loc>//ranta.ch/tags/opensource/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/php/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/categories/php/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/categories/programmieren/</loc>
     <lastmod>2017-02-19T12:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/projects/</loc>
+    <loc>//ranta.ch/tags/projects/</loc>
     <lastmod>2017-03-04T09:00:24+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/categories/projects/</loc>
+    <loc>//ranta.ch/categories/projects/</loc>
     <lastmod>2017-03-04T09:00:24+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/projects/</loc>
+    <loc>//ranta.ch/projects/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/</loc>
+    <lastmod>2017-08-17T18:45:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/raspberrypi/</loc>
     <lastmod>2017-03-04T09:00:24+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/</loc>
-    <lastmod>2017-03-05T10:41:12+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://ranta.ch/tags/raspberrypi/</loc>
-    <lastmod>2017-03-04T09:00:24+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://ranta.ch/tags/rechnen/</loc>
+    <loc>//ranta.ch/tags/rechnen/</loc>
     <lastmod>2017-02-19T12:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/robotics/</loc>
+    <loc>//ranta.ch/tags/rgraph/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/robotics/</loc>
     <lastmod>2017-03-04T09:00:24+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/categories/robotics/</loc>
+    <loc>//ranta.ch/categories/robotics/</loc>
     <lastmod>2017-03-05T10:41:12+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/slackware/</loc>
+    <loc>//ranta.ch/tags/signage/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/slackware/</loc>
     <lastmod>2017-03-05T10:41:12+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/</loc>
+    <loc>//ranta.ch/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tags/tutorial/</loc>
+    <loc>//ranta.ch/tags/tutorial/</loc>
     <lastmod>2017-02-19T12:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/categories/tutorial/</loc>
-    <lastmod>2017-03-05T10:41:12+01:00</lastmod>
+    <loc>//ranta.ch/categories/tutorial/</loc>
+    <lastmod>2017-08-17T18:45:59+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ranta.ch/tutorials/</loc>
-    <lastmod>2017-03-05T10:41:12+01:00</lastmod>
+    <loc>//ranta.ch/tutorials/</loc>
+    <lastmod>2017-08-17T18:45:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ranta.ch/tags/xibo/</loc>
+    <lastmod>2017-05-02T10:00:44+02:00</lastmod>
     <priority>0</priority>
   </url>
   

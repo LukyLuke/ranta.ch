@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Matlab on RANTA - Coding, Hacking and more</title>
-    <link>http://ranta.ch/tags/matlab/index.xml</link>
-    <description>Recent content in Matlab on RANTA - Coding, Hacking and more</description>
+    <title>Matlab on RANTA - Coding, Hacking, Teaching and more</title>
+    <link>//ranta.ch/tags/matlab/index.xml</link>
+    <description>Recent content in Matlab on RANTA - Coding, Hacking, Teaching and more</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-ch</language>
-    <atom:link href="http://ranta.ch/tags/matlab/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//ranta.ch/tags/matlab/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>MATLAB Part 3, Plotten von Werten und Funktionen</title>
-      <link>http://ranta.ch/tutorials/matlab-part-3/</link>
+      <link>//ranta.ch/tutorials/matlab-part-3/</link>
       <pubDate>Sun, 19 Feb 2017 12:00:00 +0100</pubDate>
       
-      <guid>http://ranta.ch/tutorials/matlab-part-3/</guid>
+      <guid>//ranta.ch/tutorials/matlab-part-3/</guid>
       <description>
 
 &lt;h1 id=&#34;matlab-plotten&#34;&gt;MATLAB - Plotten&lt;/h1&gt;
@@ -67,10 +67,10 @@ Die Übergebenen Vektoren müssen logischerweise die geliche Dimension aufweisen
     
     <item>
       <title>MATLAB Part 2, Programmiergrundlagen</title>
-      <link>http://ranta.ch/tutorials/matlab-part-2/</link>
+      <link>//ranta.ch/tutorials/matlab-part-2/</link>
       <pubDate>Sun, 19 Feb 2017 11:00:00 +0100</pubDate>
       
-      <guid>http://ranta.ch/tutorials/matlab-part-2/</guid>
+      <guid>//ranta.ch/tutorials/matlab-part-2/</guid>
       <description>
 
 &lt;h1 id=&#34;matlab-funktionen-und-schlaufen&#34;&gt;MATLAB - Funktionen und Schlaufen&lt;/h1&gt;
@@ -241,10 +241,10 @@ plot(x,y)
     
     <item>
       <title>MATLAB Part 1, Grundlagen</title>
-      <link>http://ranta.ch/tutorials/matlab-part-1/</link>
+      <link>//ranta.ch/tutorials/matlab-part-1/</link>
       <pubDate>Sun, 19 Feb 2017 10:00:00 +0100</pubDate>
       
-      <guid>http://ranta.ch/tutorials/matlab-part-1/</guid>
+      <guid>//ranta.ch/tutorials/matlab-part-1/</guid>
       <description>
 
 &lt;h1 id=&#34;matlab-grundlagen&#34;&gt;MATLAB - Grundlagen&lt;/h1&gt;
@@ -252,7 +252,7 @@ plot(x,y)
 &lt;p&gt;Matlab arbeitet eigentlich nur mit Matrizen und nicht mit Zahlen
 Ein &lt;code&gt;&amp;gt;&amp;gt; x = 3;&lt;/code&gt; ist eine &lt;code&gt;1x1 Matrix&lt;/code&gt; mit dem Wert &lt;code&gt;3&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Unter &lt;a href=&#34;Free Product Trial&#34;&gt;https://ch.mathworks.com/programs/trials/trial_request.html?prodcode=ML&lt;/a&gt; kann eine freie Trial-Lizenz angefragt werden.&lt;/p&gt;
+&lt;p&gt;Unter &lt;a href=&#34;https://ch.mathworks.com/programs/trials/trial_request.html?prodcode=ML&#34;&gt;Free Product Trial&lt;/a&gt; kann eine freie Trial-Lizenz angefragt werden.&lt;/p&gt;
 
 &lt;h2 id=&#34;variablen&#34;&gt;Variablen&lt;/h2&gt;
 

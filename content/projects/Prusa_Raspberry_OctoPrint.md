@@ -11,8 +11,10 @@ Um meinen 3D-Drucker, ein Prusa i4, sinnvoll zu verwenden, habe ich immer nach e
 Also habe ich angefangen mir auf einem RaspberryPi selber etwas zusammen zu bastelnmit Pronterface und anderen Tools.
 So ganz zufrieden war ich aber nie wirklich...
 
-Seit dem Tag an dem ich nach einem Update von Slic3r die Optionen zu [http://octoprint.org/](OctoPrint) gesehen habe, verwende und empfehle ich nur noch dieses Setup.
+Seit dem Tag an dem ich nach einem Update von Slic3r die Optionen zu [OctoPrint](http://octoprint.org/) gesehen habe, verwende und empfehle ich nur noch dieses Setup.
 Hier wie ich mein System aufgebaut habe - ein wenig Linux kenntnisse sind vorausgesetzt, vorallem wenn es um das installieren von paketen und Anhängigkeiten geht (die habe ich nicht mehr alle im Kopf).
+
+![OctoPrint Logo](/images/octoprint/octoprint_logo.png)
 
 # Vorbereitungen
 
@@ -83,7 +85,7 @@ $ apt-get upgrade
 
 # Webcam mit MJPG-Streamer
 
-Der Originale [https://sourceforge.net/projects/mjpg-streamer/](MJPG-Streamer) unterstützt das Kamera-Modul vom RaspberryPi nicht, es gibt aber einen Fork von Liam Jackson unter GitHub: [https://github.com/jacksonliam/mjpg-streamer](MJPEG-Streamer mit RaspiCam)
+Der Originale [MJPG-Streamer](https://sourceforge.net/projects/mjpg-streamer/) unterstützt das Kamera-Modul vom RaspberryPi nicht, es gibt aber einen Fork von Liam. Jackson unter GitHub: [MJPEG-Streamer mit RaspiCam](https://github.com/jacksonliam/mjpg-streamer).
 
 ## Installation
 
@@ -113,7 +115,7 @@ $ ./mjpeg-streamer -i "./input_uvc.so" -o "./output_http.so -p 8080 -w www"
 
 # OctoPrint installieren
 
-Die installation von [http://octoprint.org/](OctoPrint) braucht relativ viele Python-Module welche einfach mittels `pip` installiert werden können. Das Problem dabei ist, dass bei einer normalen Raspbian-Installation das `/tmp` als `60MB tmpfs` gemountet wird, was im Normalfall total ausreichend ist.
+Die installation von [OctoPrint](http://octoprint.org/) braucht relativ viele Python-Module welche einfach mittels `pip` installiert werden können. Das Problem dabei ist, dass bei einer normalen Raspbian-Installation das `/tmp` als `60MB tmpfs` gemountet wird, was im Normalfall total ausreichend ist.
 
 Für pip und die 10k Python-Module ist das jedoch zu wenig, deswegen:
 ```bash
@@ -144,7 +146,7 @@ Schlägt ein Paket fehl, die Ausgabe prüfen und die Abhängigkeiten auflösen o
 
 ## OctoPrint starten
 
-Sind alle Abhängigkeiten installiert, kann [http://octoprint.org/](OctoPrint) gestartet werden:
+Sind alle Abhängigkeiten installiert, kann [OctoPrint](http://octoprint.org/) gestartet werden:
 ```bash
 $ cd /opt/OctoPrint
 $ ./run serve --iknowwhatimdoing --port 80
@@ -155,7 +157,7 @@ Das dauert immer eine Weile, anschliessend kann dann über den Webbrowser alles 
 
 ## Nützliche Einstellungen
 
-Die Settings von [http://octoprint.org/](OctoPrint) werden im Home des jeweiligen Benutzers gespeichert: `~/.octoprint/config.yaml`
+Die Settings von [OctoPrint](http://octoprint.org/) werden im Home des jeweiligen Benutzers gespeichert: `~/.octoprint/config.yaml`
 
 ### Zugangsbeschränkung
 
@@ -183,14 +185,14 @@ Neuen Benutzer erstellen um den Zugriff zu beschränken
 
 ## Plugins
 
-OctoPrint kann mit vielen [http://plugins.octoprint.org/](OctoPrint) ausgestattet werden. Sinnvolle und Sinnlose :)
+OctoPrint kann mit vielen [Plugins](http://plugins.octoprint.org/) ausgestattet werden. Sinnvolle und Sinnlose :)
 
 ### Telegram
 
 Um ein komplett autonomes System zu haben, welches man auch mal ein paar Stundenunbeaufsichtigt laufen lassen kann, bietet sich das Telegram-Plugin an.
 
 **Unter:** Einstellungen -> PluginManager -> Mehr...
-Nach dem Plungin *Telegram* suchen und installieren. Wie man den Telegram-Bot erstellt wird gut auf der GitHub-Seite erklärt: [https://github.com/fabianonline/OctoPrint-Telegram/blob/stable/README.md#create-telegram-bot](Create Telegram Bot)
+Nach dem Plungin *Telegram* suchen und installieren. Wie man den Telegram-Bot erstellt wird gut auf der GitHub-Seite erklärt: [Create Telegram Bot](https://github.com/fabianonline/OctoPrint-Telegram/blob/stable/README.md#create-telegram-bot).
 
 Wenn der Bot erstellt ist, meine Empfehlung ist dass man die Group und Privacy Dinger abstellt, kann man nach dem eigenen Bot suchen und per Kommando `/start` anfangen mit dem Bot zu sprechen. Jeden benutzer und jede Gruppe in welche man den Bot haben will, muss man dann noch in den OctoPrint Einstellungen freischalten: **Unter:** Einstellungen -> Plugins -> Telegram
 
@@ -285,7 +287,7 @@ TODO: Beim beenden macht das Script ab und an noch ein wenig Mühe
 
 # Slic3r Integration
 
-Um den ganzen Prozess zu vereinfachen, kann man bei [http://slic3r.org/](Slic3r) ab Version 1.9.2 (oder schon früher) den [http://octoprint.org/](OctoPrint)-Server als Option eingeben und anschliessend wenn man alles plaziert hat, den gCode direkt auf den Server laden. Anschliessend muss man dann nur noch im WebInterface das File auswählen und drucken.
+Um den ganzen Prozess zu vereinfachen, kann man bei [Slic3r](http://slic3r.org/) ab Version 1.9.2 (oder schon früher) den [OctoPrint](http://octoprint.org/)-Server als Option eingeben und anschliessend wenn man alles plaziert hat, den gCode direkt auf den Server laden. Anschliessend muss man dann nur noch im WebInterface das File auswählen und drucken.
 
 Dazu wechselt man in Slic3r auf den Tab *Printer Settings* und gibt dort bei *OctoPrint upload* den Host und API-Key an.
 Den API-Key kann man auf dem Webinterface in den Einstellungen einsehen und neu generieren.
