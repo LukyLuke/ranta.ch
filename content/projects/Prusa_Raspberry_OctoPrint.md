@@ -69,7 +69,7 @@ $ wget https://raw.github.com/Hexxeh/rpi-update/master/rpi-update -O /usr/bin/rp
 
 Folgende Pakete müssen installiert werden:
 ```bash
-$ apt-get install python-pip gcc cmake git git-core libav-tools
+$ apt-get install python-pip gcc cmake git git-core libav-tools libjpeg-dev
 ```
 
 ### Installation und Setup abschliessen
@@ -101,7 +101,7 @@ Wenn alles gut läuft `mjpg-streamer` kompiliert mit einigen input- und output-P
 
 ```bash
 $ cd /opt/mjpg-streamer/mjpg-streamer-experimental
-$ ./mjpeg-streamer -i "./input_raspicam.so" -o "./output_http.so -p 8080 -w www"
+$ ./mjpg_streamer -i "./input_raspicam.so" -o "./output_http.so -p 8080 -w www"
 ```
 
 Anschliessend sollte man über den Browser direkt darauf zugreifen können: http://RASPI.IP.ADRESSE:8080/
@@ -109,7 +109,7 @@ Anschliessend sollte man über den Browser direkt darauf zugreifen können: http
 Für eine UVC-Webcam muss noch das Modul geladen werden, der rest bleibt sich gleich:
 ```bash
 $ modprobe uvcvideo
-$ ./mjpeg-streamer -i "./input_uvc.so" -o "./output_http.so -p 8080 -w www"
+$ ./mjpg_streamer -i "./input_uvc.so" -o "./output_http.so -p 8080 -w www"
 ```
 
 
@@ -133,7 +133,7 @@ $ git clone https://github.com/foosel/OctoPrint.git
 
 Bei meiner Installation bin ich bei mindestens einem Python-Modul gescheitert, deswegen sollte mindestens dieses über apt-get installiert werden:
 ```bash
-$ apt-get install python-Babbel
+$ apt-get install python-babel
 ```
 
 Alle anderen können dann über pip automatisch installiert werden:
@@ -204,55 +204,41 @@ Dieses Plugin zeigt einem die Z-Distanz in der Sidebar an, an welcher der Printe
 Nach dem Plungin *Z-Distance* suchen und installieren.
 
 
-## OctoPrint automatisch starten
+## Automatisch starten
 
-Es gibt bei OctoPrint eine Einstellung, dass dieser im Daemon-Mode gestartet wird. Der ist bei mir immer abgekackt, weswegen ich den einfach im Background starte.
+### SysV basierend
 
-Folgendes Script kann verwendet werden um MJPG-Streamer und OctoPrint automatisch zu starten und beenden:
+Folgende Scripts können verwendet werden um MJPG-Streamer und OctoPrint automatisch zu starten und beenden:
 ```bash
-#! /bin/sh
+#!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          octoprint
-# Required-Start:    $network
+# Required-Start:    $network $mjpeg-streamer
 # Required-Stop:
 # Default-Start:     2 3 4 5
 # Default-Stop:
-# Short-Description: Run Octoprint and mjpeg for streaming
+# Short-Description: Run Octoprint
 ### END INIT INFO
-
 
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 
 . /lib/init/vars.sh
 . /lib/lsb/init-functions
 
-MJPG_DIR=/opt/mjpg-streamer/mjpg-streamer-experimental
 OCTO_DIR=/opt/OctoPrint
 
 do_start() {
-        if [ -x $MJPG_DIR/mjpg_streamer ]; then
-                [ "$VERBOSE" != no ] && log_begin_msg "Stopping MJPEG-Streaming Server on port 8080"
-                $MJPG_DIR/mjpg_streamer -i "$MJPG_DIR/input_raspicam.so -x 1280 -y 720 -fps 5" -o "$MJPG_DIR/output_http.so -p 8080 -w $MJPG_DIR/www" &
-                [ "$VERBOSE" != no ] && log_end_msg 0
-        fi
         if [ -x $OCTO_DIR/run ]; then
                 [ "$VERBOSE" != no ] && log_begin_msg "Starting OctoPrint on port 80"
-                cd $OCTO_DIR
-                ./run serve --iknowwhatimdoing --port 80 &
+                cd $OCTO_DIR && ./run serve --iknowwhatimdoing --port 80 &
                 [ "$VERBOSE" != no ] && log_end_msg 0
         fi
 }
 
 do_stop() {
-        if [ -x $MJPG_DIR/mjpg_streamer ]; then
-                [ "$VERBOSE" != no ] && log_begin_msg "Stopping MJPEG-Streaming Server on port 8080"
-                ps ax | grep mjpg_streamer | awk '{print $1}' | xargs kill -s SIGINT
-                [ "$VERBOSE" != no ] && log_end_msg 0
-        fi
         if [ -x $OCTO_DIR/run ]; then
                 [ "$VERBOSE" != no ] && log_begin_msg "Stopping OctoPrint on port 80"
-                cd $OCTO_DIR
-                ps ax | grep "./run serve --iknowwhatimdoing" | awk '{print $1}' | xargs kill -s SIGQUIT
+                ps ax | grep "./run serve --iknowwhatimdoing" | awk '{print $1}' | head -1 | xargs kill -s SIGQUIT
                 [ "$VERBOSE" != no ] && log_end_msg 0
         fi
 }
@@ -280,10 +266,110 @@ case "$1" in
 esac
 ```
 
-Einfach nach `/opt/init.d/octoprint` kopieren und Ausführbar machen: `chmod +x /rtc/init.d/octoprint`
-Anschliessend mit den Debian üblichen Tools das ganze automatisch in die Start-Sequenz einbauen: `insserv octoprint`
+```bash
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          mjpeg-streamer
+# Required-Start:    $network
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: MJPEG-Streamer for streaming
+### END INIT INFO
 
-TODO: Beim beenden macht das Script ab und an noch ein wenig Mühe
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+
+. /lib/init/vars.sh
+. /lib/lsb/init-functions
+
+MJPG_DIR=/opt/mjpg-streamer/mjpg-streamer-experimental
+
+do_start() {
+        if [ -x $MJPG_DIR/mjpg_streamer ]; then
+                [ "$VERBOSE" != no ] && log_begin_msg "Stopping MJPEG-Streaming Server on port 8080"
+                $MJPG_DIR/mjpg_streamer -i "$MJPG_DIR/input_raspicam.so -x 1280 -y 720 -fps 5" -o "$MJPG_DIR/output_http.so -p 8080 -w $MJPG_DIR/www" &
+                [ "$VERBOSE" != no ] && log_end_msg 0
+        fi
+}
+
+do_stop() {
+        if [ -x $MJPG_DIR/mjpg_streamer ]; then
+                [ "$VERBOSE" != no ] && log_begin_msg "Stopping MJPEG-Streaming Server on port 8080"
+                ps ax | grep mjpg_streamer | awk '{print $1}' | head -1 | xargs kill -s SIGINT
+                [ "$VERBOSE" != no ] && log_end_msg 0
+        fi
+}
+
+case "$1" in
+    start)
+        do_start
+        ;;
+    restart)
+        do_stop
+        sleep 5
+        do_start
+        ;;
+    status|reload|force-reload)
+        echo "Error: argument '$1' not supported" >&2
+        exit 3
+        ;;
+    stop)
+        do_stop
+        ;;
+    *)
+        echo "Usage: $0 start|stop" >&2
+        exit 3
+        ;;
+esac
+```
+
+Einfach nach `/etc/init.d/octoprint` resp. `/etc/init.d/mjpg-streamer` kopieren und Ausführbar machen: `chmod +x /opt/bin/{octoprint,mjpg-streamer}`
+Anschliessend mit den üblichen verdächtigen die Links ins SysV Verzeichniss machen: `update-rc.d octoprint defaults` und `update-rc.d mjpg-streamer defaults`
+
+### SystemD basierend
+
+Dazu müssen im Verzeichniss `/etc/systemd/system/` folgende Dateien erstellt werden:
+
+```bash
+# nano /etc/systemd/system/mjpg-streamer.service
+
+[Unit]
+Description=MJPG-Streamer
+
+[Service]
+WorkingDirectory=/opt/mjpg-streamer/mjpg-streamer-experimental/
+ExecStart=/opt/mjpg-streamer/mjpg-streamer-experimental/mjpg_streamer -i "input_raspicam.so -x 1280 -y 720 -fps 5" -o "output_http.so -p 8080 -w www"
+KillMode=process
+
+[Install]
+WantedBy=default.target
+```
+
+```bash
+# nano /etc/systemd/system/octoprint.service
+
+[Unit]
+After=networking.service
+Description=OctoPrint 3D Printer Software
+
+[Service]
+WorkingDirectory=/opt/OctoPrint/
+ExecStart=/opt/OctoPrint/run serve --iknowwhatimdoing --port 80
+KillMode=process
+
+[Install]
+WantedBy=default.target
+```
+
+Diese müssen dann noch registert werden:
+```bash
+# systemctl enable mjpg-streamer.service
+# systemctl enable octoprint.service
+```
+
+Und natürlich gestartet: `service mjpg-streamer start` sowie `service octoprint start`
+
+Um zu prüfen ob das ganze geklappt hat: `journalctl -u mjpg-streamer.service` resp. `journalctl -u octoprint.service`
 
 # Slic3r Integration
 
