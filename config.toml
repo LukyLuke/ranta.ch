@@ -1,6 +1,6 @@
 title = "RANTA - Coding, Hacking, Teaching and more"
 description = "A page from Lukas Zurschmiede aka LukyLuke_ch about all things like Hacking, Printing, Coding, Claiming, and so on."
-baseurl = "//ranta.ch/"
+baseurl = "//www.ranta.ch"
 languageCode = "de-ch"
 defaultContentLanguage = "de"
 theme = "hugo-redlounge"
