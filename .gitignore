@@ -1,2 +1,4 @@
 publish.sh
 public/ 
+*.lock
+*-swp

@@ -1,42 +1,68 @@
-title = "RANTA - Coding, Hacking, Teaching and more"
-description = "A page from Lukas Zurschmiede aka LukyLuke_ch about all things like Hacking, Printing, Coding, Claiming, and so on."
+title = "RANTA.CH"
+description = "A page from Lukas Zurschmiede aka LukyLuke_ch about all things like Hacking, 3D-Printing, Coding, Security, Digital-Health, ..."
 baseurl = "//www.ranta.ch"
 languageCode = "de-ch"
 defaultContentLanguage = "de"
-theme = "hugo-redlounge"
+theme = "beautifulhugo"
 buildFuture = true
 buildExpired = true
 disable404 = true
 
 [params]
-	sidebartitle = "Ranta"
-	sidebartagline = "Coding, Hacking, Teaching, Robotics, Security and more"
-	nocomment = true
-	lightbox = false
-	sidebarphoto = "/page/ranta.jpg"
-	categoriescss = "/css/ranta-changes.css"
-	author = "Lukas Zurschmiede aka LukyLuke_ch"
+	subtitle = "Coding, Hacking, Teaching, Robotics, Security, DigiHealth, ..."
+	mainSectons = [ "post", "posts" ]
+	logo = "/page/ranta.jpg"
+	favicon = "/page/ranta.jpg"
+	dateFormat = "January 1, 2021"
+	commit = false
+	comments = false
+	readingTime = true
+	wordCount = false
+	useHLJS = true
+	socialShare = false
+	showRelatedPosts = true
 
+[Author]
+	name = "Lukas LukyLuke_ch Zurschmiede"
+	website = "ranta.ch"
+	email = "lukas.zurschmiede@ranta.ch"
+	facebook = "lukas.zurschmiede"
+	github = "LukyLuke"
+#	gitlab = "LukyLuke_ch"
+#	bitbucket = "LukyLuke_ch"
+	twitter = "@ranta_plan"
+	instagram = "lukyluke_ch"
+	youtube = "channel/UCVYmO2wep9JnEMwNrg1OpGg" # or user/username
+	paypal = "LukyLukech"
+	telegram = "LukyLuke_ch"
+
+
+[[menu.main]]
+	name = "Main"
+	url = ""
+	weight = 1
+
+[[menu.main]]
+	name = "About"
+	url = "page/about/"
+	weight = 4
 
 [[menu.main]]
 	name = "Articles"
 	url = "/posts"
+	weight = 2
 
 [[menu.main]]
 	name = "Tutorials"
 	url = "/tutorials"
+	weight = 2
 
 [[menu.main]]
 	name = "Projects"
 	url = "/projects"
+	weight = 2
 
-
-[[menu.social]]
-	pre = "<i class='fa fa-twitter'></i>"
-	url = "http://www.twitter.com/ranta_plan"
-	identifier = "twitter"
-
-[[menu.social]]
-	pre = "<i class='fa fa-github'></i>"
-	url = "http://www.github.com/LukyLuke"
-	identifier = "github"
+[[menu.main]]
+	name = "Tags"
+	url = "tags"
+	weight = 5

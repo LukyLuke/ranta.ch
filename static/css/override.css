@@ -1,0 +1,60 @@
+nav.navbar-custom {
+	background: #33200a;
+}
+.navbar-custom .navbar-brand, .navbar-custom .nav li a {
+	color: #c2a67e;
+}
+
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus ,
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li a:focus {
+  color: #fceccb;
+}
+
+.blog-tags a,
+p a,
+a {
+	color: #c2a67e;
+}
+.blog-tags a:hover {
+	color: #33200a;
+}
+
+p a:hover {
+	border-radius: 2px;
+	color: #33200a;
+	background-color: #CCC;
+	text-decoration: none;
+}
+
+.post-preview a:focus,
+.post-preview a:hover,
+a:hover,
+a:focus {
+	color: #c2a67e;
+}
+
+::selection {
+	color: white;
+	background: #33200a;
+}
+
+.pager li a:hover,
+.pager li a:focus {
+	background: #c2a67e;
+	border-color: #33200a;
+}
+
+code {
+	color: #88735b;
+	background-color: #fbf9f5;
+	border: 1px solid #d5cbb8;
+}
+
+pre {
+	padding: 3px;
+}
+pre code, .hljs {
+	background-color: #fbf9f5;
+}
