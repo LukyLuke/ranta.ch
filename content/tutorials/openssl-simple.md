@@ -261,3 +261,18 @@ Hat man schon einen privaten Schlüssel der nicht kompromitiert ist, kann dieser
 $ openssl x509 -in cert_certificate.crt -signkey private.key -x509toreq -out cert_certificate.csr
 ```
 
+## Server Zertifikate
+
+Braucht man für einen Server den private Key und das Zertifikat, muss man diese entsprechend aus dem PEM oder PFX extrahieren:
+
+```bash
+$ openssl pkcs12 -in certificate.pfx -nokeys -out certificate.pem
+$ openssl pkcs12 -in certificate.pfx -nocerts -nodes -out private.key
+```
+
+Diese kann man dann z.B. bei Nginx entsprechend einbinden:
+
+```
+ssl_certificate /etc/nginx/certs/certificate.pem;
+ssl_certificate_key /etc/nginx/certs/private.key;
+```
